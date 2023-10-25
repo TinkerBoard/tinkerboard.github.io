@@ -1,4 +1,4 @@
-# Getting started
+# Getting Started
 ## Download
 ### Source control tools
 Working with Tinker Board series code requires using both Git (an open-source version-control system) and Repo (a Google-built repository-management tool that runs on top of Git). We refer to how Android does for [Source control tools](https://source.android.com/docs/setup/download){:target="_blank"}.
