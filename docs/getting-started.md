@@ -1,12 +1,12 @@
 # Getting started
 ## Download
 ### Source control tools
-Working with Tinker Board series code requires using both Git (an open-source version-control system) and Repo (a Google-built repository-management tool that runs on top of Git). We refer to how Android does for [Source control tools](https://source.android.com/docs/setup/download).
+Working with Tinker Board series code requires using both Git (an open-source version-control system) and Repo (a Google-built repository-management tool that runs on top of Git). We refer to how Android does for [Source control tools](https://source.android.com/docs/setup/download){:target="_blank"}.
 
-Please refer to [Installing Repo](https://source.android.com/setup/develop#installing-repo) to install the Repo Launcher.
+Please refer to [Installing Repo](https://source.android.com/setup/develop#installing-repo){:target="_blank"} to install the Repo Launcher.
 
 ### Downloading the source
-Since Tinker Board series code is organized in the same way as how Android code is done, please refer to [Downloading the Source](https://source.android.com/setup/build/downloading) to understand how to download the Android code for more information.
+Since Tinker Board series code is organized in the same way as how Android code is done, please refer to [Downloading the Source](https://source.android.com/setup/build/downloading){:target="_blank"} to understand how to download the Android code for more information.
 
 There are branches for different products and manifests for different releases in Tinker Board series code.
 
@@ -25,7 +25,7 @@ To download the code base source tree to your working directory from the reposit
     $ repo sync
 
 ## Build
-We use Docker to establish a build environment, please refer to [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker Engine on Ubuntu.
+We use Docker to establish a build environment, please refer to [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/){:target="_blank"} to install Docker Engine on Ubuntu.
 
 To build the image, go to to the directory where you have downloaded the code base and run the script as the following. This will take a while to install the necessary packages on the host and build the Docker image.
 
