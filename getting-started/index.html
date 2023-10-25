@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://tinkerboard.github.io/getting-started/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Getting Started - Tinker Board Series Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Tinker Board Series Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../releases/" class="nav-link">Releases</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">ASUS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://www.asus.com" target="_blank" class="dropdown-item">ASUS</a>
+</li>
+                                    
+<li>
+    <a href="https://iot.asus.com" target="_blank" class="dropdown-item">ASUS IoT</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tinker Board Series <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="https://tinker-board.asus.com" target="_blank" class="dropdown-item">Tinker Board Website</a>
+</li>
+                                    
+<li>
+    <a href="https://tinker-board.asus.com/forum/" target="_blank" class="dropdown-item">Tinker Board Forum</a>
+</li>
+                                    
+<li>
+    <a href="https://github.com/TinkerBoard/TinkerBoard/wiki/" target="_blank" class="dropdown-item">Tinker Board Wiki</a>
+</li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">GitHub for Tinker Board Series</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="https://github.com/TinkerBoard/" target="_blank" class="dropdown-item">Linux</a>
+</li>
+            
+<li>
+    <a href="https://github.com/TinkerBoard-Android/" target="_blank" class="dropdown-item">Android</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../releases/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#getting-started" class="nav-link">Getting Started</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#download" class="nav-link">Download</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#source-control-tools" class="nav-link">Source control tools</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#downloading-the-source" class="nav-link">Downloading the source</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#build" class="nav-link">Build</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="3"><a href="#tinker-board-22s" class="nav-link">Tinker Board 2/2S</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#tinker-os-android" class="nav-link">Tinker OS Android</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            <li class="nav-item" data-level="3"><a href="#tinker-board-3n" class="nav-link">Tinker Board 3N</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="4"><a href="#tinker-os-debian" class="nav-link">Tinker OS Debian</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#tinker-os-yocto" class="nav-link">Tinker OS Yocto</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="4"><a href="#tinker-os-android_1" class="nav-link">Tinker OS Android</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="getting-started">Getting Started</h1>
+<h2 id="download">Download</h2>
+<h3 id="source-control-tools">Source control tools</h3>
+<p>Working with Tinker Board series code requires using both Git (an open-source version-control system) and Repo (a Google-built repository-management tool that runs on top of Git). We refer to how Android does for <a href="https://source.android.com/docs/setup/download" target="_blank">Source control tools</a>.</p>
+<p>Please refer to <a href="https://source.android.com/setup/develop#installing-repo" target="_blank">Installing Repo</a> to install the Repo Launcher.</p>
+<h3 id="downloading-the-source">Downloading the source</h3>
+<p>Since Tinker Board series code is organized in the same way as how Android code is done, please refer to <a href="https://source.android.com/setup/build/downloading" target="_blank">Downloading the Source</a> to understand how to download the Android code for more information.</p>
+<p>There are branches for different products and manifests for different releases in Tinker Board series code.</p>
+<p>To check out the latest code for a product, please run the following command and use the branch name for that product as REVISION.</p>
+<pre><code>$ repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVISION
+</code></pre>
+<p>To check out the code base for a specific release, please run the following command and use the branch name for that product as REVISION and the manifest as NAME.xml.</p>
+<pre><code>$ repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVISION -m NAME.xml
+</code></pre>
+<p>Here REVISON is the manifest branch for the product and NAME.xml is the manifest file for the release. Regarding the branches and manifests for each project, please refer to <a href="../releases/">Releases</a>.</p>
+<p>To download the code base source tree to your working directory from the repositories as specified in the default manifest, run:</p>
+<pre><code>$ repo sync
+</code></pre>
+<h2 id="build">Build</h2>
+<p>We use Docker to establish a build environment, please refer to <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Install Docker Engine on Ubuntu</a> to install Docker Engine on Ubuntu.</p>
+<p>To build the image, go to to the directory where you have downloaded the code base and run the script as the following. This will take a while to install the necessary packages on the host and build the Docker image.</p>
+<pre><code>$ ./docker_builder/docker-builder-run.sh
+</code></pre>
+<p>Once the above is done, you are in the shell of the newly started Docker container. You can start to run commands as usual. You can then run the commands to build the image. The images will be saved in the directory IMAGE.</p>
+<h3 id="tinker-board-22s">Tinker Board 2/2S</h3>
+<h4 id="tinker-os-android">Tinker OS Android</h4>
+<p>To build the image, please run the following commands.</p>
+<pre><code>$ source build/envsetup.sh
+$ lunch Tinker_Board_2-userdebug
+$ ./build.sh -UCKAu
+</code></pre>
+<h3 id="tinker-board-3n">Tinker Board 3N</h3>
+<h4 id="tinker-os-debian">Tinker OS Debian</h4>
+<p>To build the image, please run the following commands.</p>
+<pre><code>​$ ./build.sh rockchip_rk3568_tinker_board_3n_debain_defconfig
+$ VERSION=release ./build.sh
+</code></pre>
+<h4 id="tinker-os-yocto">Tinker OS Yocto</h4>
+<p>To build the image, please run the following commands.</p>
+<pre><code>$ ./build.sh rockchip_rk3568_tinker_board_3n_yocto_defconfig
+$ ./build.sh
+</code></pre>
+<h4 id="tinker-os-android_1">Tinker OS Android</h4>
+<p>To build the image, please run the following commands.</p>
+<pre><code>$ source build/envsetup.sh
+$ lunch Tinker_Board_3N-userdebug 
+$ ./build.sh -UCKAu
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
