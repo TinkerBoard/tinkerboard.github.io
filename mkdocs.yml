@@ -1,5 +1,6 @@
 site_name: Tinker Board Series Documentation
-site_url: https://tinkerboard.github.io
+site_url: https://tinkerboard.github.io/
+
 nav:
   - Home: 'index.md'
   - 'Getting Started': 'getting-started.md'
@@ -14,6 +15,7 @@ nav:
     - 'GitHub for Tinker Board Series':
       - 'Linux': 'https://github.com/TinkerBoard/'
       - 'Android': 'https://github.com/TinkerBoard-Android/'
+
 theme:
   name: mkdocs
   navigation_depth: 4
