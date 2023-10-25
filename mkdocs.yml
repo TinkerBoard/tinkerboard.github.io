@@ -6,15 +6,15 @@ nav:
   - 'Getting Started': 'getting-started.md'
   - Releases: 'releases.md'
   - ASUS:
-    - ASUS: 'https://www.asus.com'
-    - 'ASUS IoT': 'https://iot.asus.com'
+    - ASUS: 'https://www.asus.com" target="_blank'
+    - 'ASUS IoT': 'https://iot.asus.com" target="_blank'
   - 'Tinker Board Series':
-    - 'Tinker Board Website': 'https://tinker-board.asus.com'
-    - 'Tinker Board Forum': 'https://tinker-board.asus.com/forum/'
-    - 'Tinker Board Wiki': 'https://github.com/TinkerBoard/TinkerBoard/wiki/'
+    - 'Tinker Board Website': 'https://tinker-board.asus.com" target="_blank'
+    - 'Tinker Board Forum': 'https://tinker-board.asus.com/forum/" target="_blank'
+    - 'Tinker Board Wiki': 'https://github.com/TinkerBoard/TinkerBoard/wiki/" target="_blank'
     - 'GitHub for Tinker Board Series':
-      - 'Linux': 'https://github.com/TinkerBoard/'
-      - 'Android': 'https://github.com/TinkerBoard-Android/'
+      - 'Linux': 'https://github.com/TinkerBoard/" target="_blank'
+      - 'Android': 'https://github.com/TinkerBoard-Android/" target="_blank'
 
 theme:
   name: mkdocs
