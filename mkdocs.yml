@@ -1,0 +1,22 @@
+site_name: Tinker Board Series Documentation
+site_url: https://tinkerboard.github.io
+nav:
+  - Home: 'index.md'
+  - 'Getting Started': 'getting-started.md'
+  - Releases: 'releases.md'
+  - ASUS:
+    - ASUS: 'https://www.asus.com'
+    - 'ASUS IoT': 'https://iot.asus.com'
+  - 'Tinker Board Series':
+    - 'Tinker Board Website': 'https://tinker-board.asus.com'
+    - 'Tinker Board Forum': 'https://tinker-board.asus.com/forum/'
+    - 'Tinker Board Wiki': 'https://github.com/TinkerBoard/TinkerBoard/wiki/'
+    - 'GitHub for Tinker Board Series':
+      - 'Linux': 'https://github.com/TinkerBoard/'
+      - 'Android': 'https://github.com/TinkerBoard-Android/'
+theme:
+  name: mkdocs
+  navigation_depth: 4
+
+markdown_extensions:
+  - attr_list
