@@ -6,12 +6,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  title: 'ASUS Tinker Board Series Documentation Website',
+  //tagline: 'Dinosaurs are cool',
+  favicon: 'img/tinker_board-favicon.png',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://tinkerboard.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -42,15 +42,15 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          //editUrl:
+          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          //editUrl:
+          //  'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -63,24 +63,24 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/tinker_board-logo.png',
       navbar: {
-        title: 'My Site',
+        title: 'ASUS Tinker Board Series Documentation Website',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'ASUS Tinker Board Series Documentation Website Logo',
+          src: 'img/tinker_board-logo.png',
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Getting Started',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://tinker-board.asus.com',
+            label: 'Tinker Board Website',
             position: 'right',
           },
         ],
@@ -89,11 +89,37 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Documentation',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Getting Started',
+                to: '/docs/getting-started',
+              },
+            ],
+          },
+          {
+            title: 'ASUS',
+            items: [
+              {
+                label: 'ASUS',
+                href: 'https://www.asus.com',
+              },
+              {
+                label: 'ASUS IoT',
+                href: 'https://iot.asus.com',
+              },
+            ],
+              },
+              {
+            title: 'Tinker Board Series',
+            items: [
+              {
+                label: 'Tinker Board Website',
+                href: 'https://tinker-board.asus.com',
+              },
+              {
+                label: 'Tinker Board Wiki',
+                href: 'https://github.com/TinkerBoard/TinkerBoard/wiki/',
               },
             ],
           },
@@ -101,16 +127,8 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Tinker Board Forum',
+                href: 'https://tinker-board.asus.com/forum/',
               },
             ],
           },
@@ -122,17 +140,25 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'GitHub - Linux',
+                href: 'https://github.com/TinkerBoard/',
+              },
+              {
+                label: 'GitHub - Android',
+                href: 'https://github.com/TinkerBoard-Android/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ASUSTeK Computer Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
       },
     }),
 };
