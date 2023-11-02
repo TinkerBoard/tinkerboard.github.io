@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://tinkerboard.github.io/blog</id>
-    <title>ASUS Tinker Board Series Documentation Website Blog</title>
+    <title>ASUS Tinker Board Series Documentation Blog</title>
     <updated>2023-10-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://tinkerboard.github.io/blog"/>
-    <subtitle>ASUS Tinker Board Series Documentation Website Blog</subtitle>
+    <subtitle>ASUS Tinker Board Series Documentation Blog</subtitle>
     <icon>https://tinkerboard.github.io/img/tinker_board-favicon.png</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>https://tinkerboard.github.io/blog/welcome</id>
         <link href="https://tinkerboard.github.io/blog/welcome"/>
         <updated>2023-10-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Welcome to ASUS Tinker Board Series Documentation Website!]]></summary>
-        <content type="html"><![CDATA[<p>Welcome to ASUS Tinker Board Series Documentation Website!</p><p>This is newly created and still under construnction.</p>]]></content>
+        <summary type="html"><![CDATA[Welcome to ASUS Tinker Board Series Documentation!]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to ASUS Tinker Board Series Documentation!</p><p>This is newly created and still under construnction.</p>]]></content>
         <author>
             <name>Leslie Yu</name>
         </author>
