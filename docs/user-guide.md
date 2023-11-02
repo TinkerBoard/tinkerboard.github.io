@@ -26,7 +26,7 @@ If the u-boot installed on the internal storage (eMMC) is still workable for the
 2. Connect the device with a PC via the USB cable and then power on the device.
 3. Then, the device will boot into the UMS mode automatically.
 
-##### Booting the device into the UMS from a SD card
+#### Booting the device into the UMS from a SD card
 If there is no workable u-boot for the UMS function installed on the internal storage (eMMC), in this case the device can not boot into the UMS mode from the internal storage (eMMC), you can still boot the device into the UMS mode from a SD card.
 1. Flash the image (with u-boot including UMS function) into a SD card.
 2. Plug in the SD card into the device.
