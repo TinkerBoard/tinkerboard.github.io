@@ -18,7 +18,7 @@ This is the normal OS boot such as Debian, Yocto, and Android. The device can bo
 ### UMS mode
 The USB mass storage class is a USB function which can be used to export and share the storage. The UMS function is implemented in u-boot. During the u-boot boot-up stage, the device will check whether the deivce is connected to a PC or not. If connected to a PC, the device will enter the UMS mode automatically. If not, the device will follow the boot priority to continue the boot process.
 
-When the device boots into the UMS mode, it exports and shares the internal storage (eMMC) to the connected PC just like a USB storage connected to the PC or a SD card plugged into a PC. Then, the users can use the disk wrtier software such as [balenaEtcher](https://www.balena.io/etcher/) or Linux `dd` command to write the image into the internal storage (eMMC).
+When the device boots into the UMS mode, it exports and shares the internal storage (eMMC) to the connected PC just like a USB storage connected to the PC or a SD card plugged into a PC. Then, the users can use the disk writer software such as [balenaEtcher](https://www.balena.io/etcher/) or Linux `dd` command to write the image into the internal storage (eMMC).
 
 #### Booting the device into the UMS mode from the internal storage (eMMC)
 If the u-boot installed on the internal storage (eMMC) is still workable for the UMS function, then you can follow the following steps to boot the device into the UMS mode from the internal storage (eMMC).
@@ -34,7 +34,7 @@ If there is no workable u-boot for the UMS function installed on the internal st
 4. Then, the device will boot into the UMS mode automatically.
 
 ### Flashing the images
-Once the device equipped with the internal storage (eMMC) boots into the [UMS mode](#ums-mode), you can use the disk wrtier software such as [balenaEtcher](https://www.balena.io/etcher/).
+Once the device equipped with the internal storage (eMMC) boots into the [UMS mode](#ums-mode), you can use the disk writer software such as [balenaEtcher](https://www.balena.io/etcher/).
 
 1. Download the Tinker OS images from the [Tinker Board website](https://tinker-board.asus.com/download.html).
 2. Download the software [balenaEtcher](https://www.balena.io/etcher/).

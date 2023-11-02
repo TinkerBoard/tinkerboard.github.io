@@ -84,7 +84,7 @@ source build/envsetup.sh
 lunch Tinker_Board_3N-userdebug 
 ```
 
-Usally, we will run the follwing commands to build all the images and those will be stored ib the directory rockdev/Image-Tinker_Board_3N.
+Usally, we will run the follwing commands to build all the images and those will be stored in the directory rockdev/Image-Tinker_Board_3N.
 ```bash
 ./build.sh -UCKAu
 ```
