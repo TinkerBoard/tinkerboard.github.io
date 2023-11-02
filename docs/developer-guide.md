@@ -13,6 +13,8 @@ Since Tinker Board series code is organized in the same way as how Android code 
 
 There are branches for different products and manifests for different releases in Tinker Board series code.
 
+For Tinker OS Debian and Yocto:
+
 To check out the latest code for a product, please run the following command and use the branch name for that product as REVISION.
 ```bash
 repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVISION
@@ -21,6 +23,17 @@ repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVIS
 To check out the code base for a specific release, please run the following command and use the branch name for that product as REVISION and the manifest as NAME.xml.
 ```bash
 repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVISION -m NAME.xml
+```
+For Tinker OS Android:
+
+To check out the latest code for a product, please run the following command and use the branch name for that product as REVISION.
+```bash
+repo init -u https://github.com/TinkerBoard-Android/rockchip-android-manifest.git -b REVISION
+```
+
+To check out the code base for a specific release, please run the following command and use the branch name for that product as REVISION and the manifest as NAME.xml.
+```bash
+repo init -u https://github.com/TinkerBoard-Android/rockchip-android-manifest.git -b REVISION -m NAME.xml
 ```
 
 Here REVISON is the manifest branch for the product and NAME.xml is the manifest file for the release. Regarding the branches and manifests for each project, please refer to [Tinker OS Releaes](tinker-os-releases.md).
