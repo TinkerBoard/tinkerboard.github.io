@@ -8,7 +8,7 @@ const FeatureList = [
   {
   },
   {
-    title: 'Welcome to ASUS Tinker Board Series Documentation Website!',
+    title: 'Welcome to ASUS Tinker Board Series Documentation!',
  
     description: (
       <>

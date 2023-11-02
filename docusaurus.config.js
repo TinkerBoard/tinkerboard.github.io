@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'ASUS Tinker Board Series Documentation Website',
+  title: 'ASUS Tinker Board Series Documentation',
   //tagline: 'Dinosaurs are cool',
   favicon: 'img/tinker_board-favicon.png',
 
@@ -65,9 +65,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/tinker_board-logo.png',
       navbar: {
-        title: 'ASUS Tinker Board Series Documentation Website',
+        title: 'ASUS Tinker Board Series Documentation',
         logo: {
-          alt: 'ASUS Tinker Board Series Documentation Website Logo',
+          alt: 'ASUS Tinker Board Series Documentation Logo',
           src: 'img/tinker_board-logo.png',
         },
         items: [
