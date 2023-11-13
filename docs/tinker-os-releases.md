@@ -10,6 +10,16 @@ sidebar_position: 5
 |Tinker Board (S) (R2.0)|Android 12|latest|android12-rockchip|default.xml|
 
 ## Tinker Board 2/2S
+### Tinker OS Debian
+|Products|Debian Versions|Releases|Branches|Manifests|Notes|
+|-|-|-|-|-|-|
+|Tinker Board 2/2S|Debian 11|latest|linux5.10-rk3399-debian11|default.xml|
+
+### Tinker OS Yocto
+|Products|Yocto Project Versions|Releases|Branches|Manifests|Notes|
+|-|-|-|-|-|-|
+|Tinker Board 2/2S|Yocto 4.0|latest|linux5.10-rk3399-debian11|default.xml|
+
 ### Tinker OS Android
 |Products|Android Versions|Releases|Branches|Manifests|Notes|
 |-|-|-|-|-|-|
