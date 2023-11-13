@@ -54,6 +54,20 @@ To build the image, go to to the directory where you have downloaded the code ba
 Once the above is done, you are in the shell of the newly started Docker container. You can start to run commands as usual. You can then run the commands to build the image. The images will be saved in the directory IMAGE.
 
 ### Tinker Board 2/2S
+#### Tinker OS Debian
+To build the image, please run the following commands.
+```bash
+./build.sh rockchip_rk3399_tinker_board_2_debian_defconfig
+VERSION=release ./build.sh
+```
+
+#### Tinker OS Yocto
+To build the image, please run the following commands.
+```bash
+./build.sh rockchip_rk3399_tinker_board_2_yocto_defconfig
+./build.sh
+```
+
 #### Tinker OS Android
 To build the image, please run the following commands.
 ```bash
