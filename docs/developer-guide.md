@@ -17,12 +17,12 @@ For Tinker OS Debian and Yocto:
 
 To check out the latest code for a product, please run the following command and use the branch name for that product as REVISION.
 ```bash
-repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVISION
+repo init -u https://github.com/TinkerBoard-Linux/rockchip-linux-manifest.git -b REVISION
 ```
 
 To check out the code base for a specific release, please run the following command and use the branch name for that product as REVISION and the manifest as NAME.xml.
 ```bash
-repo init -u https://github.com/TinkerBoard/rockchip-linux-manifest.git -b REVISION -m NAME.xml
+repo init -u https://github.com/TinkerBoard-Linux/rockchip-linux-manifest.git -b REVISION -m NAME.xml
 ```
 For Tinker OS Android:
 
