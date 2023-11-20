@@ -147,8 +147,8 @@ index 59d3f8a..d19d66d 100644
 ./build.sh -UCKABu
 ```
 
-##### Creat a new partition for A/B boot
-To creat a new partition for A/B boot, please apply the following modification and specify the argument `B`.
+##### Create a new partition for A/B boot
+To create a new partition for A/B boot, please apply the following modification and specify the argument `B`.
 - device/asus/common
 ```diff
 diff --git a/mkimage_ab.sh b/mkimage_ab.sh
