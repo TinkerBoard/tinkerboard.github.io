@@ -146,6 +146,110 @@ index 59d3f8a..d19d66d 100644
 ```bash
 ./build.sh -UCKABoup -n X.Y.Z
 ```
+##### Creat a new partition for A/B boot
+- device/asus/common
+```diff
+diff --git a/mkimage_ab.sh b/mkimage_ab.sh
+index 7bfcf27..2e5efe0 100755
+--- a/mkimage_ab.sh
++++ b/mkimage_ab.sh
+@@ -313,4 +313,14 @@ rm -rf $IMAGE_PATH/.tmp
+ echo "done."
+ fi
+ 
++echo -n "create persist.img"
++dd if=/dev/zero of=$IMAGE_PATH/dtoverlay.img count=2000 bs=8k
++mkdosfs $IMAGE_PATH/persist.img
++# You can uncomment the followings to put some initial files if needed.
++#mkdir $IMAGE_PATH/.tmp
++#sudo mount $IMAGE_PATH/persist.img $IMAGE_PATH/.tmp
++#sudo umount $IMAGE_PATH/.tmp
++#rm -rf $IMAGE_PATH/.tmp
++echo "done."
++
+ chmod a+r -R $IMAGE_PATH/
+```
+
+- device/asus/tinker_board_3
+```diff
+diff --git a/RebuildParameter.mk b/RebuildParameter.mk
+index 95796c2..8c3e6c5 100644
+--- a/RebuildParameter.mk
++++ b/RebuildParameter.mk
+@@ -38,6 +38,8 @@ partition_list := $(partition_list),splash:16M
+ # Added by ASUS: dtoverlay partition
+ partition_list := $(partition_list),dtoverlay:16M
+ 
++partition_list := $(partition_list),persist:16M
++
+ ifeq ($(strip $(BOARD_SUPER_PARTITION_GROUPS)),rockchip_dynamic_partitions)
+ partition_list := $(partition_list),super:$(BOARD_SUPER_PARTITION_SIZE)
+ else # BOARD_USE_DYNAMIC_PARTITIONS
+diff --git a/Tinker_Board_3N/fstab.in b/Tinker_Board_3N/fstab.in
+index 89348c2..e8c9696 100755
+--- a/Tinker_Board_3N/fstab.in
++++ b/Tinker_Board_3N/fstab.in
+@@ -26,6 +26,7 @@ ${_block_prefix}odm     /odm      ext4 ro,barrier=1 ${_flags},first_stage_mount
+ # Added by ASUS
+ /dev/block/by-name/splash       /splash             emmc      defaults     defaults
+ /dev/block/by-name/dtoverlay    /dtoverlay          vfat      defaults     defaults
++/dev/block/by-name/persist    /persist         vfat      defaults     defaults
+ 
+ #  Full disk encryption has less effect on rk3326, so default to enable this.
+ /dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065 latemount,wait,check,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,quota,formattable,reservedsize=128M,checkpoint=fs
+diff --git a/Tinker_Board_3N/recovery.fstab_AB b/Tinker_Board_3N/recovery.fstab_AB
+index e4b65c6..4478d16 100644
+--- a/Tinker_Board_3N/recovery.fstab_AB
++++ b/Tinker_Board_3N/recovery.fstab_AB
+@@ -24,3 +24,4 @@ odm_dlkm    /odm_dlkm    ext4 ro,barrier=1 wait,slotselect,logical,first_stage_m
+ # Added by ASUS
+ /dev/block/by-name/splash           /splash                emmc             defaults                  defaults
+ /dev/block/by-name/dtoverlay           /dtoverlay                vfat             defaults                  defaults
++/dev/block/by-name/persist    /persist         vfat      defaults     defaults
+diff --git a/sepolicy/dtoverlay/file_contexts b/sepolicy/dtoverlay/file_contexts
+index fd6a17f..75c0564 100644
+--- a/sepolicy/dtoverlay/file_contexts
++++ b/sepolicy/dtoverlay/file_contexts
+@@ -1,3 +1,6 @@
+ /dtoverlay(/.*)?                u:object_r:vfat:s0
+ 
+ /dev/block/by-name/dtoverlay    u:object_r:userdata_block_device:s0
++
++/persist(/.*)?                u:object_r:vfat:s0
++/dev/block/by-name/persist    u:object_r:userdata_block_device:s0
+```
+- RKTools
+```diff
+diff --git a/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab b/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab
+index 1cf0780..17489b5 100755
+--- a/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab
++++ b/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab
+@@ -13,6 +13,7 @@ dtbo_a      Image/dtbo.img
+ dtbo_b      Image/dtbo.img
+ splash      Image/splash.img
+ dtoverlay   Image/dtoverlay.img
++persist   Image/persist.img
+ vbmeta_a    Image/vbmeta.img
+ vbmeta_b    Image/vbmeta.img
+ baseparameter    Image/baseparameter.img
+```
+- system/core
+```diff
+diff --git a/rootdir/Android.mk b/rootdir/Android.mk
+index 63a1a484b..39cea748d 100644
+--- a/rootdir/Android.mk
++++ b/rootdir/Android.mk
+@@ -116,6 +116,8 @@ ifdef BOARD_USES_DTOVERLAY_PARTITION
+   LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/dtoverlay
+ endif
+ 
++LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/persist
++
+ # For /odm partition.
+ LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/odm
+ # For Treble Generic System Image (GSI), system-as-root GSI needs to work on
+```
+
 ##### Enable secure boot
 To enable secure boot, please apply the following modification first.
 ```diff
