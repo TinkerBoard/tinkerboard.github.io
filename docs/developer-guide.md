@@ -144,9 +144,11 @@ index 59d3f8a..d19d66d 100644
 ```
 
 ```bash
-./build.sh -UCKABoup -n X.Y.Z
+./build.sh -UCKABu
 ```
+
 ##### Creat a new partition for A/B boot
+To creat a new partition for A/B boot, please apply the following modification and specify the argument `B`.
 - device/asus/common
 ```diff
 diff --git a/mkimage_ab.sh b/mkimage_ab.sh
@@ -218,6 +220,7 @@ index fd6a17f..75c0564 100644
 +/persist(/.*)?                u:object_r:vfat:s0
 +/dev/block/by-name/persist    u:object_r:userdata_block_device:s0
 ```
+
 - RKTools
 ```diff
 diff --git a/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab b/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab
@@ -233,6 +236,7 @@ index 1cf0780..17489b5 100755
  vbmeta_b    Image/vbmeta.img
  baseparameter    Image/baseparameter.img
 ```
+
 - system/core
 ```diff
 diff --git a/rootdir/Android.mk b/rootdir/Android.mk
@@ -248,6 +252,10 @@ index 63a1a484b..39cea748d 100644
  # For /odm partition.
  LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/odm
  # For Treble Generic System Image (GSI), system-as-root GSI needs to work on
+```
+
+```bash
+./build.sh -UCKABu
 ```
 
 ##### Enable secure boot
