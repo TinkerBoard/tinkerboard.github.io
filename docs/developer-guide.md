@@ -158,7 +158,7 @@ index 7bfcf27..2e5efe0 100755
  fi
  
 +echo -n "create persist.img"
-+dd if=/dev/zero of=$IMAGE_PATH/dtoverlay.img count=2000 bs=8k
++dd if=/dev/zero of=$IMAGE_PATH/persist.img count=2000 bs=8k
 +mkdosfs $IMAGE_PATH/persist.img
 +# You can uncomment the followings to put some initial files if needed.
 +#mkdir $IMAGE_PATH/.tmp
