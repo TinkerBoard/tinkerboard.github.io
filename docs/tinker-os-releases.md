@@ -38,6 +38,7 @@ sidebar_position: 5
 |Tinker Board 3N|Yocto 4.0|latest|linux5.10-rk356x|default.xml|
 
 ### Tinker OS Android
-|Products|Android Versions|Releases|Branches|Manifests|Notes|
-|-|-|-|-|-|-|
-|Tinker Board 3N|Android 12|latest|android12-rockchip|default.xml|
+|Products|Android Versions|Releases|GitHub Accounts|Branches|Manifests|Notes|
+|-|-|-|-|-|-|-|
+|Tinker Board 3N|Android 12|latest|TinkerBoard-Android|android12-rockchip|default.xml||
+|Tinker Board 3N|Android 12|1.0.7|TinkerBoard-Android|android12-rockchip|tinker_board_3N-android12-1.0.7.xml||
