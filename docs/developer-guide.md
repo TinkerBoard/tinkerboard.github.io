@@ -112,17 +112,6 @@ We can also specify the argument `o` to build the OTA package and configure the 
 To enable A/B boot, please apply the following modification and specify the argument `B`.
 - u-boot
 ```diff
-From fe04a288147c040a800f2917d8b06113c6674a0c Mon Sep 17 00:00:00 2001
-From: yi-hsin_hung <yi-hsin_hung@asus.com>
-Date: Tue, 31 Oct 2023 16:44:35 +0800
-Subject: [PATCH] AB boot: Enable AB boot config by uboot
-
-Change-Id: Iba605527449a4b67368e749bb2ae7489c973341d
-Signed-off-by: yi-hsin_hung <yi-hsin_hung@asus.com>
----
- configs/tinker_board_3n_defconfig | 1 +
- 1 file changed, 1 insertion(+)
-
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..6779b1a11e 100644
 --- a/configs/tinker_board_3n_defconfig
@@ -135,23 +124,10 @@ index a7b28f952b..6779b1a11e 100644
  CONFIG_ANDROID_BOOT_IMAGE_HASH=y
  CONFIG_SPL_BOARD_INIT=y
  # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
--- 
-2.34.1
 ```
 
 - device/asus/tinker_board_3
 ```diff
-From 3d2b1be9735232e587be1cb273d347d57150c706 Mon Sep 17 00:00:00 2001
-From: yi-hsin_hung <yi-hsin_hung@asus.com>
-Date: Tue, 31 Oct 2023 16:45:59 +0800
-Subject: [PATCH] AB boot: Enable AB IMAGE for Tinker Board 3N
-
-Change-Id: I87f0ba831481667ba0c57ee91fe845da7052d16a
-Signed-off-by: yi-hsin_hung <yi-hsin_hung@asus.com>
----
- Tinker_Board_3N/BoardConfig.mk | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
 diff --git a/Tinker_Board_3N/BoardConfig.mk b/Tinker_Board_3N/BoardConfig.mk
 index 59d3f8a..d19d66d 100644
 --- a/Tinker_Board_3N/BoardConfig.mk
@@ -165,8 +141,6 @@ index 59d3f8a..d19d66d 100644
  BOARD_ROCKCHIP_VIRTUAL_AB_ENABLE := false
  
  ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
--- 
-2.34.1
 ```
 
 ```bash
