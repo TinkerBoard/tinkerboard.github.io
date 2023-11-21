@@ -109,7 +109,7 @@ We can also specify the argument `o` to build the OTA package and configure the 
 ```
 
 ##### Enable A/B boot
-To enable A/B boot, please apply the following modification and specify the argument `B`.
+To enable A/B boot, please apply the following modification and specify the argument `B` when building.
 - u-boot
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
@@ -148,7 +148,7 @@ index 59d3f8a..d19d66d 100644
 ```
 
 ##### Create a new partition for A/B boot
-To create a new partition for A/B boot, please apply the following modification and specify the argument `B`.
+To create a new partition for A/B boot, please apply the following modification.
 - device/asus/common
 ```diff
 diff --git a/mkimage_ab.sh b/mkimage_ab.sh
@@ -259,31 +259,25 @@ index 63a1a484b..39cea748d 100644
 ```
 
 ##### Enable secure boot
-To enable secure boot, please apply the following modification first.
+To enable secure boot, please apply the following modification and follow the procedure to build.
+
+:::caution
+If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same keys.
+:::
+
+- u-boot
 ```diff
-From b829122af4073a0594dd502cfef852e7d04ca9e3 Mon Sep 17 00:00:00 2001
-From: frank_chiang <frank_chiang@asus.com>
-Date: Thu, 2 Nov 2023 10:05:42 +0800
-Subject: [PATCH] defconfig: Add Base Secure Boot setting for Tinker Board 3N
-
-Change-Id: Iafeda29fbdc4127ec1e7aad2bd9d95b985b1c373
----
- configs/tinker_board_3n_defconfig | 3 +++
- 1 file changed, 3 insertions(+)
-
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
-index a7b28f952b..19d8766ced 100644
+index a7b28f952b..1428a5abb5 100644
 --- a/configs/tinker_board_3n_defconfig
 +++ b/configs/tinker_board_3n_defconfig
-@@ -220,3 +220,6 @@ CONFIG_RK_AVB_LIBAVB_USER=y
+@@ -220,3 +221,6 @@ CONFIG_RK_AVB_LIBAVB_USER=y
  CONFIG_OPTEE_CLIENT=y
  CONFIG_OPTEE_V2=y
  CONFIG_OPTEE_ALWAYS_USE_SECURITY_PARTITION=y
 +CONFIG_FIT_SIGNATURE=y
 +CONFIG_SPL_FIT_SIGNATURE=y
 +CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE=y
--- 
-2.34.1
 ```
 
 Then, generate keys in the directory u-boot. (You only need to do this once if you don't have the keys generated.)
@@ -297,8 +291,8 @@ openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt
 
 Once the keys are ready, we need to build and sign the output first.
 
-:::warning
---burn-key-hash: If you add this compiling option, the secure boot for this SoC will enabled during the 1st boot-up after the image is installed. Suggest you only do this for enablement. Then just use the option --spl-new to sign the image without the option --burn-key-hash.
+:::caution
+--burn-key-hash: If you add this compiling option, the secure boot for this SoC will enabled during the 1st boot-up after the image is installed. Suggest you only do this for enablement. Then just use the option `--spl-new` to sign the image without the option `--burn-key-hash`.
 :::
 
 ```bash
@@ -309,7 +303,7 @@ Then, build the rest without re-building u-boot.
 ```bash
 source build/envsetup.sh 
 lunch Tinker_Board_3N-userdebug  
-./build.sh -CKABoup -n X.Y.Z
+./build.sh -CKABu
 ```
 
 Once the device boots up with the signed image, you can see the console log as the following.
@@ -321,6 +315,6 @@ Trying fit image at 0x4000 sector
 sha256,rsa2048:dev## Verified-boot: 1 
 ```
 
-:::warning
-Once the signed image is installed on the device and the device will be enbled for the secure boot for the 1st boot up. Then, the device can not boot with any other images which are not signed by the same keys.
+:::danger
+Once the signed image built with the option `--burn-key-hash` is installed on the device, the secure boot will be enabled for the device during the 1st boot up. Then, the device can not boot with any other images which are not signed by the same keys.
 :::
