@@ -103,13 +103,13 @@ Usally, we will run the follwing commands to build all the images and those will
 ./build.sh -UCKAu
 ```
 
-We can also specify the argument `o` to build the OTA package and configure the build number with the argument `n`. If the argument `p` is used, the build result will be moved to the directory IMAGE.
+We can also specify the option `o` to build the OTA package and configure the build number with the option `n`. If the option `p` is used, the build result will be moved to the directory IMAGE.
 ```bash
 ./build.sh -UCKAoup -n X.Y.Z
 ```
 
 ##### Enable A/B boot
-To enable A/B boot, please apply the following modification and specify the argument `B` when building.
+To enable A/B boot, please apply the following modification and specify the option `B` when building.
 - u-boot
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
@@ -285,24 +285,27 @@ Then, generate keys in the directory u-boot. (You only need to do this once if y
 cd u-boot
 mkdir -p keys
 ../rkbin/tools/rk_sign_tool kk --bits 2048 --out . 
-mv private_key.pem keys/dev.key && mv public_key.pem keys/dev.pubkey 
-openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt 
+mv private_key.pem keys/dev.key && mv public_key.pem keys/dev.pubkey
+openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt
+cd ..
 ```
 
 Once the keys are ready, we need to build and sign the output first.
 
 :::caution
---burn-key-hash: If you add this compiling option, the secure boot for this SoC will enabled during the 1st boot-up after the image is installed. Suggest you only do this for enablement. Then just use the option `--spl-new` to sign the image without the option `--burn-key-hash`.
+--burn-key-hash: If you add this option, the secure boot for this SoC will enabled during the 1st boot-up after the image is installed. Suggest you only do this for enablement. Then just use the option `--spl-new` to sign the image without the option `--burn-key-hash`.
 :::
 
 ```bash
-./make.sh tinker_board_3n --spl-new --burn-key-hash
-```
-
-Then, build the rest without re-building u-boot.
-```bash
 source build/envsetup.sh 
 lunch Tinker_Board_3N-userdebug  
+cd u-boot
+./make.sh tinker_board_3n --spl-new --burn-key-hash
+cd ..
+```
+
+Then, build the rest without re-building u-boot using the option `U`.
+```bash 
 ./build.sh -CKABu
 ```
 
@@ -313,6 +316,12 @@ U-Boot SPL 2017.09-dirty #android (May 16 2023 - 16:36:29)
 Trying fit image at 0x4000 sector 
 ## Verified-boot: 1 
 sha256,rsa2048:dev## Verified-boot: 1 
+```
+
+You can also use the adb command to get the property vendor.secureboot and it will be true for secure boot enabled.
+```bash
+adb shell getprop | grep "vendor.secureboot"
+[vendor.secureboot]: [true]
 ```
 
 :::danger
