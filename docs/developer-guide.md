@@ -109,7 +109,7 @@ You can also specify the option `o` to build the OTA package and configure the b
 ```
 
 ##### Enable A/B boot
-To enable A/B boot, please refer to the following information.
+To enable A/B boot, please refer to the following modification.
 
 - The directory u-boot
 
@@ -150,7 +150,7 @@ index 59d3f8a..d19d66d 100644
  ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 ```
 
-- Please add the option `B` to build the images.
+- Please add the option `B` when building all the images.
 ```bash
 ./build.sh -UCKABu
 ```
