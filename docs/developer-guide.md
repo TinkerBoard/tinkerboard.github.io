@@ -112,13 +112,12 @@ You can also provide the argument `o` to build the OTA package or configure the 
 ./build.sh -UCKAoup -n X.Y.Z
 ```
 
-##### Enable A/B boot
-To enable A/B boot, please refer to the following modification.
+##### A/B boot
+To enable A/B boot, please refer to the following information.
 
-- The directory u-boot
+- u-boot
 
-  Please enable the config CONFIG_ANDROID_AB as the following.
-
+  Go to the directory u-boot and make sure the config CONFIG_ANDROID_AB is enabled as the following.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..6779b1a11e 100644
@@ -134,10 +133,9 @@ index a7b28f952b..6779b1a11e 100644
  # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
 ```
 
-- The directory device/asus/tinker_board_3
+- device/asus/tinker_board_3
 
-  Please set BOARD_USES_AB_IMAGE to true as the folowing.
-
+  Go to the directory device/asus/tinker_board_3 and set the flag BOARD_USES_AB_IMAGE to true as the folowing.
 ```diff
 diff --git a/Tinker_Board_3N/BoardConfig.mk b/Tinker_Board_3N/BoardConfig.mk
 index 59d3f8a..d19d66d 100644
@@ -154,7 +152,7 @@ index 59d3f8a..d19d66d 100644
  ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 ```
 
-- Please add the option `B` when building all the images.
+- Please provide the argument `B` when running the `build.sh` script.
 ```bash
 ./build.sh -UCKABu
 ```
