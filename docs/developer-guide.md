@@ -92,18 +92,22 @@ To build the image, please run the following commands.
 ```
 
 #### Tinker OS Android
-Please run the following commands to configure the build environment and chooose to build for Tinker Board 3N.
+Initialize the environment with the `envsetup.sh` script.
 ```bash
 source build/envsetup.sh
+```
+
+Run the lunch command to choose `Tinker_Board_3N-userdebug` as the target to build the images for Tinker Board 3N.
+```bash
 lunch Tinker_Board_3N-userdebug 
 ```
 
-You can run the follwing commands to build all the images. The images will be stored in the directory rockdev/Image-Tinker_Board_3N.
+Run the `build.sh` script to build all the images. Here the argument `U` is provided to build the u-boot, the arguments `C` and `K` are provided to build the kernel, the argument `A` is provided to build the Android, and the argument `u` is provided to pack all the images. All the images will be stored in the directory rockdev/Image-Tinker_Board_3N.
 ```bash
 ./build.sh -UCKAu
 ```
 
-You can also specify the option `o` to build the OTA package and configure the build number with the option `n`. If the option `p` is used, the build result will be moved to the directory IMAGE.
+You can also provide the argument `o` to build the OTA package and configure the build number with the argument `n`. If the argument `p` is provided, the build result will be moved to the directory IMAGE.
 ```bash
 ./build.sh -UCKAoup -n X.Y.Z
 ```
