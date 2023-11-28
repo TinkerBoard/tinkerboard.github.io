@@ -97,7 +97,7 @@ Initialize the environment with the `envsetup.sh` script.
 source build/envsetup.sh
 ```
 
-Run the lunch command to choose `Tinker_Board_3N-userdebug` as the target to build the images for Tinker Board 3N.
+Run the `lunch` command to choose `Tinker_Board_3N-userdebug` as the target to build the images for Tinker Board 3N.
 ```bash
 lunch Tinker_Board_3N-userdebug 
 ```
@@ -107,7 +107,7 @@ Run the `build.sh` script to build all the images. Here the argument `U` is prov
 ./build.sh -UCKAu
 ```
 
-You can also provide the argument `o` to build the OTA package and configure the build number with the argument `n`. If the argument `p` is provided, the build result will be moved to the directory IMAGE.
+You can also provide the argument `o` to build the OTA package or configure the build number with the argument `n`. If the argument `p` is provided, the build result will be moved to the directory IMAGE.
 ```bash
 ./build.sh -UCKAoup -n X.Y.Z
 ```
