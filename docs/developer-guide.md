@@ -121,7 +121,7 @@ You can provide the argument `o` to build the OTA packages. The target-files.zip
 Please refer to [Building OTA packages](https://source.android.com/docs/core/ota/tools) to build full updates and incremental updates.
 
 ##### A/B boot
-To enable A/B boot, the following modification needs to be applied.
+To enable the A/B boot, the following modification needs to be applied.
 
 - u-boot
 
@@ -196,7 +196,7 @@ index 7bfcf27..2e5efe0 100755
 
   In the directory device/asus/tinker_board_3:
   - Edit the `RebuildParameter.mk` file to add the partition persist into the partition_list.
-  - Edit the `fstab.in` file and the `recovery.fstab_AB` file to add the partition /dev/block/by-name/persist.
+  - Edit the `Tinker_Board_3N/fstab.in` file and the `Tinker_Board_3N/recovery.fstab_AB` file to add the partition /dev/block/by-name/persist.
   - Edit the `sepolicy/dtoverlay/file_contexts` file to configure SELinux for the partition /dev/block/by-name/persist.
 ```diff
 diff --git a/RebuildParameter.mk b/RebuildParameter.mk
@@ -283,11 +283,11 @@ index 63a1a484b..39cea748d 100644
  # For Treble Generic System Image (GSI), system-as-root GSI needs to work on
 ```
 
-##### Enable secure boot
-To enable secure boot, please apply the following modification and follow the procedure to build.
+##### Secure boot
+To enable the secure boot, the following modification needs to be applied.
 
 :::caution
-If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same keys.
+If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same keys used to enable the secure boot.
 :::
 
 - u-boot
