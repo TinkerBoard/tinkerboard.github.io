@@ -44,14 +44,14 @@ repo sync
 ```
 
 ## Building the code
-We use Docker to establish a build environment, please refer to [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker Engine on Ubuntu.
+There are Dockerfile and scripts provided to establish a build environment. Please also refer to [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker Engine on Ubuntu.
 
-To build the image, go to to the directory where you have downloaded the code base and run the script as the following. This will take a while to install the necessary packages on the host and build the Docker image.
+To build the code, go to to the directory where you have downloaded the code base and run the `docker-builder-run.sh` script. This will take a while to install the necessary packages on the host and build the Docker image.
 ```bash
 ./docker_builder/docker-builder-run.sh
 ```
 
-Once the above is done, you are in the shell of the newly started Docker container. You can start to run commands as usual. You can then run the commands to build the image. The images will be saved in the directory IMAGE.
+Once the above is done, the shell of the newly started Docker container is available. You can run commands in the shell to build the code.
 
 ### Tinker Board 2/2S
 #### Tinker OS Debian
@@ -97,27 +97,27 @@ Initialize the environment with the `envsetup.sh` script.
 source build/envsetup.sh
 ```
 
-Run the `lunch` command to choose `Tinker_Board_3N-userdebug` as the target to build the images for Tinker Board 3N.
+Run the `lunch` command to choose `Tinker_Board_3N-userdebug` as the target to build for Tinker Board 3N.
 ```bash
 lunch Tinker_Board_3N-userdebug 
 ```
 
-Run the `build.sh` script to build all the images. Here the argument `U` is provided to build the u-boot, the arguments `C` and `K` are provided to build the kernel, the argument `A` is provided to build the Android, and the argument `u` is provided to pack all the images. All the images will be stored in the directory rockdev/Image-Tinker_Board_3N.
+Run the `build.sh` script to build the code. Here the argument `U` is provided to build the u-boot, the arguments `C` and `K` are provided to build the kernel, the argument `A` is provided to build the Android, and the argument `u` is provided to pack all the images. All the images will be stored in the directory rockdev/Image-Tinker_Board_3N.
 ```bash
 ./build.sh -UCKAu
 ```
 
-You can also provide the argument `o` to build the OTA package or configure the build number with the argument `n`. If the argument `p` is provided, the build result will be moved to the directory IMAGE.
+You can also provide the argument `o` to build the OTA package or configure the build number with the argument `n`. If the argument `p` is provided, the build output will be moved to the directory IMAGE.
 ```bash
 ./build.sh -UCKAoup -n X.Y.Z
 ```
 
 ##### A/B boot
-To enable A/B boot, please refer to the following information.
+To enable A/B boot, the following modification needs to be applied.
 
 - u-boot
 
-  Go to the directory u-boot and make sure the config CONFIG_ANDROID_AB is enabled as the following.
+  In the directory u-boot, make sure the config CONFIG_ANDROID_AB is enabled.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..6779b1a11e 100644
@@ -135,7 +135,7 @@ index a7b28f952b..6779b1a11e 100644
 
 - device/asus/tinker_board_3
 
-  Go to the directory device/asus/tinker_board_3 and set the flag BOARD_USES_AB_IMAGE to true as the folowing.
+  In the directory device/asus/tinker_board_3, change the flag BOARD_USES_AB_IMAGE to true.
 ```diff
 diff --git a/Tinker_Board_3N/BoardConfig.mk b/Tinker_Board_3N/BoardConfig.mk
 index 59d3f8a..d19d66d 100644
@@ -152,14 +152,16 @@ index 59d3f8a..d19d66d 100644
  ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 ```
 
-- Please provide the argument `B` when running the `build.sh` script.
+- Provide the argument `B` when running the `build.sh` script.
 ```bash
 ./build.sh -UCKABu
 ```
 
-##### Create a new partition for A/B boot
-To create a new partition for A/B boot, please apply the following modification.
+##### Creating a new partition for A/B boot
+Here is the example to create a new partition persist for A/B boot and the partition will be mounted on /persist.
 - device/asus/common
+
+  In the directory device/asus/common, edit the `mkimage_ab.sh` script to create the persist.img file. The initial data could also be added here.
 ```diff
 diff --git a/mkimage_ab.sh b/mkimage_ab.sh
 index 7bfcf27..2e5efe0 100755
@@ -183,6 +185,11 @@ index 7bfcf27..2e5efe0 100755
 ```
 
 - device/asus/tinker_board_3
+
+  In the directory device/asus/tinker_board_3:
+  - Edit the `RebuildParameter.mk` file to add the partition persist into the partition_list.
+  - Edit the `fstab.in` file and the `recovery.fstab_AB` file to add the partition /dev/block/by-name/persist.
+  - Edit the `sepolicy/dtoverlay/file_contexts` file to configure SELinux for the partition /dev/block/by-name/persist.
 ```diff
 diff --git a/RebuildParameter.mk b/RebuildParameter.mk
 index 95796c2..8c3e6c5 100644
@@ -232,6 +239,8 @@ index fd6a17f..75c0564 100644
 ```
 
 - RKTools
+
+  In the directory RKTools, add the partition persist using the image persist.img.
 ```diff
 diff --git a/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab b/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab
 index 1cf0780..17489b5 100755
@@ -248,6 +257,8 @@ index 1cf0780..17489b5 100755
 ```
 
 - system/core
+
+  In the directory system/core, edit the `rootdir/Android.mk` file to mount the partition persist on /persist.
 ```diff
 diff --git a/rootdir/Android.mk b/rootdir/Android.mk
 index 63a1a484b..39cea748d 100644
@@ -262,10 +273,6 @@ index 63a1a484b..39cea748d 100644
  # For /odm partition.
  LOCAL_POST_INSTALL_CMD += ; mkdir -p $(TARGET_ROOT_OUT)/odm
  # For Treble Generic System Image (GSI), system-as-root GSI needs to work on
-```
-
-```bash
-./build.sh -UCKABu
 ```
 
 ##### Enable secure boot
