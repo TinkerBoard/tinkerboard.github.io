@@ -44,7 +44,7 @@ repo sync
 ```
 
 ## Building the code
-There are Dockerfile and scripts provided to establish a build environment. Please also refer to [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker Engine on Ubuntu.
+There are Dockerfile and scripts provided to establish a build environment. Please refer to [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/) to install Docker Engine on Ubuntu.
 
 To build the code, go to to the directory where you have downloaded the code base and run the `docker-builder-run.sh` script. This will take a while to install the necessary packages on the host and build the Docker image.
 ```bash
@@ -107,10 +107,18 @@ Run the `build.sh` script to build the code. Here the argument `U` is provided t
 ./build.sh -UCKAu
 ```
 
-You can also provide the argument `o` to build the OTA package or configure the build number with the argument `n`. If the argument `p` is provided, the build output will be moved to the directory IMAGE.
+You can configure the build number with the argument `n`. If the argument `p` is provided, the build output will be moved to the directory IMAGE.
 ```bash
-./build.sh -UCKAoup -n X.Y.Z
+./build.sh -UCKAup -n X.Y.Z
 ```
+
+##### Building OTA packages
+You can provide the argument `o` to build the OTA packages. The target-files.zip archive and the full OTA package will be built out.
+```bash
+./build.sh -UCKAou
+```
+
+Please refer to [Building OTA packages](https://source.android.com/docs/core/ota/tools) to build full updates and incremental updates.
 
 ##### A/B boot
 To enable A/B boot, the following modification needs to be applied.
