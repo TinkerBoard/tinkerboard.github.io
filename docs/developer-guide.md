@@ -291,6 +291,8 @@ If the secure boot is eanbled, the device can not boot with any other images whi
 :::
 
 - u-boot
+
+  In the directory u-boot, make sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..1428a5abb5 100644
@@ -305,7 +307,7 @@ index a7b28f952b..1428a5abb5 100644
 +CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE=y
 ```
 
-Then, generate keys in the directory u-boot. (You only need to do this once if you don't have the keys generated.)
+Generate keys in the directory u-boot. (You only need to do this once if you don't have the keys generated.)
 ```bash
 cd u-boot
 mkdir -p keys
@@ -315,21 +317,27 @@ openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt
 cd ..
 ```
 
-Once the keys are ready, we need to build and sign the output first.
+Once the keys are ready, build and sign the u-boot by providing the argument `--spl-new` and make it able to enable the secure boot automaticall by providing the arguement `--burn-key-hash`.
 
-:::caution
---burn-key-hash: If you add this option, the secure boot for this SoC will enabled during the 1st boot-up after the image is installed. Suggest you only do this for enablement. Then just use the option `--spl-new` to sign the image without the option `--burn-key-hash`.
+:::danger
+--burn-key-hash: If this arguemnt is provided, the secure boot for this SoC will be enabled during the 1st boot-up automatically after the image is installed. Then, the device can not boot with any other images which are not signed by the same keys. Suggest you only do this for the secure boot enablement and use the arguemnt `--spl-new` to sign the image without the argument `--burn-key-hash`.
 :::
 
-```bash
-source build/envsetup.sh 
-lunch Tinker_Board_3N-userdebug  
+```bash 
 cd u-boot
 ./make.sh tinker_board_3n --spl-new --burn-key-hash
 cd ..
 ```
 
-Then, build the rest without re-building u-boot using the option `U`.
+Or only to build and sign the u-boot by providing the argument `--spl-new`
+
+```bash 
+cd u-boot
+./make.sh tinker_board_3n --spl-new
+cd ..
+```
+
+Then, build the rest without re-building u-boot by removing the argument `U`.
 ```bash 
 ./build.sh -CKABu
 ```
@@ -343,12 +351,8 @@ Trying fit image at 0x4000 sector
 sha256,rsa2048:dev## Verified-boot: 1 
 ```
 
-You can also use the adb command to get the property vendor.secureboot and it will be true for secure boot enabled.
+You can also use the adb command to get the property vendor.secureboot and it will be true if the secure boot is enabled.
 ```bash
 adb shell getprop | grep "vendor.secureboot"
 [vendor.secureboot]: [true]
 ```
-
-:::danger
-Once the signed image built with the option `--burn-key-hash` is installed on the device, the secure boot will be enabled for the device during the 1st boot up. Then, the device can not boot with any other images which are not signed by the same keys.
-:::
