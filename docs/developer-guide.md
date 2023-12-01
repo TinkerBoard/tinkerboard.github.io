@@ -292,7 +292,7 @@ If the secure boot is eanbled, the device can not boot with any other images whi
 
 - u-boot
 
-  In the directory u-boot, make sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled.
+  In the directory u-boot, make sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_SPL_FIT_ROLLBACK_PROTECT to enable the u-boot rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..1428a5abb5 100644
@@ -334,6 +334,14 @@ Or only to build and sign the u-boot by providing the argument `--spl-new`
 ```bash 
 cd u-boot
 ./make.sh tinker_board_3n --spl-new
+cd ..
+```
+
+If the config CONFIG_SPL_FIT_ROLLBACK_PROTECT is enable to enable the u-boot rollback protection. You will need to provide the argemeny `-version-uboot` and `--rollback-index-uboot`.
+
+```bash 
+cd u-boot
+./make.sh tinker_board_3n --spl-new --version-uboot 0 --rollback-index-uboot 1
 cd ..
 ```
 
@@ -388,7 +396,7 @@ rm testkey_atx_p*
 
 - u-boot
 
-  In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled.
+  In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_FIT_ROLLBACK_PROTECT to enable the rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..4f7502fdf9 100644
@@ -419,7 +427,7 @@ cd -
 
 - device/asus/tinker_board_3
 
-  In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined.
+  In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_FIT_ROLLBACK_PROTECT to be enabled for u-boot as well.
 ```bash
 diff --git a/BoardConfig.mk b/BoardConfig.mk
 index 6ce3cd7..33f515b 100644
@@ -446,7 +454,7 @@ Vboot=0, AVB images, AVB verify
 read_is_device_unlocked() ops returned that device is LOCKED
 ```
 
-You can also use the adb command to get the property ro.boot.verifiedbootstate and it will be gree if the image is verified OK.
+You can also use the adb command to get the property ro.boot.verifiedbootstate and it will be green if the image is verified OK.
 ```bash
 adb shell getprop | grep "ro.boot.verifiedbootstate"
 [ro.boot.verifiedbootstate]: [green]
