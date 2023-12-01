@@ -356,3 +356,98 @@ You can also use the adb command to get the property vendor.secureboot and it wi
 adb shell getprop | grep "vendor.secureboot"
 [vendor.secureboot]: [true]
 ```
+
+##### Android verified boot
+To enable the Android verified boot, the following modification needs to be applied.
+
+- external/avb
+ 
+  In the directory externa/avb, edit the `test/avb_atx_generate_test_data` file to change the product ID.
+```diff
+diff --git a/test/avb_atx_generate_test_data b/test/avb_atx_generate_test_data
+index 1b8bb2b..83016ad 100755
+--- a/test/avb_atx_generate_test_data
++++ b/test/avb_atx_generate_test_data
+@@ -48,7 +48,7 @@ AVBTOOL=$(dirname "$0")/../avbtool
+ echo AVBTOOL = ${AVBTOOL}
+ 
+ # Get a zero product ID.
+-echo 00000000000000000000000000000000 | xxd -r -p - atx_product_id.bin
++echo 000000000000000000000000000000123 | xxd -r -p - atx_product_id.bin
+ 
+ # Generate key pairs.
+ if [ ! -f testkey_atx_prk.pem ]; then
+```
+
+-  Remove the default test keys and generate new atx_permanent_attributes.bin , atx_metadata.bin, testkey_atx_pik.pem, testkey_atx_prk.pem, testkey_atx_psk.pem, testkey_atx_puk.pem, atx_unlock_challenge.bin, atx_unlock_credential.bin stored in the external/avb/test/data directory. (You only need to do this once if you don't have these generated.)
+```bash
+cd external/avb/test/data
+rm testkey_atx_p*
+../avb_atx_generate_test_data
+```
+
+- u-boot
+
+  In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled.
+```diff
+diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
+index a7b28f952b..4f7502fdf9 100644
+--- a/configs/tinker_board_3n_defconfig
++++ b/configs/tinker_board_3n_defconfig
+@@ -220,3 +220,5 @@ CONFIG_RK_AVB_LIBAVB_USER=y
+ CONFIG_OPTEE_CLIENT=y
+ CONFIG_OPTEE_V2=y
+ CONFIG_OPTEE_ALWAYS_USE_SECURITY_PARTITION=y
++CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE=y
++CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK=y
+```
+
+:::danger
+If the AVB key is embeded in th u-boot, the AVB for this SoC will be enabled during the 1st boot-up automatically after the image is installed. Suggest you only do this for the AVB enablement.
+:::
+- Embed the AVB key in the u-boot to write the key automatically during the 1st boot-up automatically after the image is installed.
+  - Apply the patch to embed the AVB key in to the u-boot and extract the public key.
+  - Edit the `lib/avb/libavb_user/avb_ops_user.c` file to replace the data of avb_root_pub[] with the data of avb_root_pub_bin in avb_root_pub.h extracted.
+```bash
+cd u-boot
+git apply ../RKDocs/common/security/patch/u-boot/0001-avb-add-embedded-key.patch
+cd -
+cd external/avb
+./avbtool extract_public_key --key test/data/testkey_atx_psk.pem --output avb_root_pub.bin $ xxd -i avb_root_pub.bin > test/data/avb_root_pub.h
+cd -
+```
+
+- device/asus/tinker_board_3
+
+  In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined.
+```bash
+diff --git a/BoardConfig.mk b/BoardConfig.mk
+index 6ce3cd7..33f515b 100644
+--- a/BoardConfig.mk
++++ b/BoardConfig.mk
+@@ -22,7 +22,10 @@ PRODUCT_KERNEL_ARCH ?= arm64
+ #PRODUCT_KERNEL_DTS ?= rk3568-tinker_board_3
+ #PRODUCT_KERNEL_CONFIG ?= tinker_board_3_defconfig
+ 
+-# BOARD_AVB_ENABLE := true
++BOARD_AVB_ENABLE := true
++BOARD_AVB_ALGORITHM := SHA256_RSA4096
++BOARD_AVB_KEY_PATH := external/avb/test/data/testkey_atx_psk.pem
++BOARD_AVB_METADATA_BIN_PATH := external/avb/test/data/atx_metadata.bin
+ # used for fstab_generator, sdmmc controller address
+ PRODUCT_BOOT_DEVICE := fe310000.sdhci,fe330000.nandc,fe2b0000.dwmmc
+
+```
+
+Once the device boots up with the AVB enabled image, you can see the console log as the following.
+```console 
+Console log in uboot stage:
+Vboot=0, AVB images, AVB verify
+read_is_device_unlocked() ops returned that device is LOCKED
+```
+
+You can also use the adb command to get the property ro.boot.verifiedbootstate and it will be gree if the image is verified OK.
+```bash
+adb shell getprop | grep "ro.boot.verifiedbootstate"
+[ro.boot.verifiedbootstate]: [green]
+```
