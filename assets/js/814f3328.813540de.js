@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktinkerboard_github_io=self.webpackChunktinkerboard_github_io||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/blog/welcome","unlisted":false}]}')}}]);
