@@ -36,7 +36,7 @@ To check out the code base for a specific release, please run the following comm
 repo init -u https://github.com/TinkerBoard-Android/rockchip-android-manifest.git -b REVISION -m NAME.xml
 ```
 
-Here REVISON is the manifest branch for the product and NAME.xml is the manifest file for the release. Regarding the branches and manifests for each project, please refer to [Tinker OS Releaes](tinker-os-releases.md).
+Here REVISON is the manifest branch for the product and NAME.xml is the manifest file for the release. Regarding the branches and manifests for each project, please refer to [Tinker OS Releaes](tinker_os-releases).
 
 To download the code base source tree to your working directory from the repositories as specified in the default manifest, run:
 ```bash
