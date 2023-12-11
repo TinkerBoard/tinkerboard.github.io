@@ -91,15 +91,6 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Documentation',
-            items: [
-              {
-                label: 'Getting Started',
-                to: '/docs/getting-started',
-              },
-            ],
-          },
-          {
             title: 'ASUS',
             items: [
               {
@@ -143,7 +134,7 @@ const config = {
               },
               {
                 label: 'GitHub - Linux',
-                href: 'https://github.com/TinkerBoard/',
+                href: 'https://github.com/TinkerBoard-Linux/',
               },
               {
                 label: 'GitHub - Android',

@@ -21,13 +21,15 @@ The USB mass storage class is a USB function which can be used to export and sha
 When the device boots into the UMS mode, it exports and shares the internal storage (eMMC) to the connected PC just like a USB storage connected to the PC or a SD card plugged into a PC. Then, the users can use the disk writer software such as [balenaEtcher](https://www.balena.io/etcher/) or Linux `dd` command to write the image into the internal storage (eMMC).
 
 #### Booting the device into the UMS mode from the internal storage (eMMC)
-If the u-boot installed on the internal storage (eMMC) is still workable for the UMS function, then you can follow the following steps to boot the device into the UMS mode from the internal storage (eMMC).
+You can follow the following steps to boot the device into the UMS mode from the internal storage (eMMC).
 1. Make sure there is no SD card plugged into the device.
 2. Connect the device with a PC via the USB cable and then power on the device.
 3. Then, the device will boot into the UMS mode automatically.
 
-#### Booting the device into the UMS from a SD card
-If there is no workable u-boot for the UMS function installed on the internal storage (eMMC), in this case the device can not boot into the UMS mode from the internal storage (eMMC), you can still boot the device into the UMS mode from a SD card.
+If you fail to do this, you can still try to boot the device into the UMS mode from a SD card.
+
+#### Booting the device into the UMS mode from a SD card
+If you fail to boot the device into the UMS mode from the internal storage (eMMC), you can still boot the device into the UMS mode from a SD card.
 1. Flash the image (with u-boot including UMS function) into a SD card.
 2. Plug in the SD card into the device.
 3. Connect the device with a PC via the USB cable and then power on the device.
