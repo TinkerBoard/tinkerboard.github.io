@@ -1,23 +1,8 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 ---
 
-# Tinker Board 3N
-## Tinker OS Debian
-To build the image, please run the following commands.
-```bash
-./build.sh rockchip_rk3568_tinker_board_3n_debain_defconfig
-VERSION=release ./build.sh
-```
-
-## Tinker OS Yocto
-To build the image, please run the following commands.
-```bash
-./build.sh rockchip_rk3568_tinker_board_3n_yocto_defconfig
-./build.sh
-```
-
-## Tinker OS Android
+# Tinker OS Android
 Initialize the environment with the `envsetup.sh` script.
 ```bash
 source build/envsetup.sh
@@ -38,7 +23,7 @@ You can configure the build number with the argument `n`. If the argument `p` is
 ./build.sh -UCKAup -n X.Y.Z
 ```
 
-### Building OTA packages
+## Building OTA packages
 You can provide the argument `o` to build the OTA packages. The target-files.zip archive and the full OTA package will be built out.
 ```bash
 ./build.sh -UCKAou
@@ -46,7 +31,7 @@ You can provide the argument `o` to build the OTA packages. The target-files.zip
 
 Please refer to [Building OTA packages](https://source.android.com/docs/core/ota/tools) to build full updates and incremental updates.
 
-### A/B boot
+## A/B boot
 To enable the A/B boot, the following modification needs to be applied.
 
 - u-boot
@@ -91,7 +76,7 @@ index 59d3f8a..d19d66d 100644
 ./build.sh -UCKABu
 ```
 
-### Creating a new partition for A/B boot
+## Creating a new partition for A/B boot
 Here is the example to create a new partition persist for A/B boot and the partition will be mounted on /persist.
 - device/asus/common
 
@@ -209,7 +194,7 @@ index 63a1a484b..39cea748d 100644
  # For Treble Generic System Image (GSI), system-as-root GSI needs to work on
 ```
 
-### Secure boot
+## Secure boot
 To enable the secure boot, the following modification needs to be applied.
 
 :::caution
@@ -291,7 +276,7 @@ adb shell getprop | grep "vendor.secureboot"
 [vendor.secureboot]: [true]
 ```
 
-### Android verified boot
+## Android verified boot
 To enable the Android verified boot, the following modification needs to be applied.
 
 - external/avb
