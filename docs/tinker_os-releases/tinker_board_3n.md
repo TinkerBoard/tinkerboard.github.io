@@ -19,3 +19,4 @@ sidebar_position: 1
 |-|-|-|-|-|
 |Android 12|latest|android12-rockchip|default.xml||
 |Android 12|1.0.7|android12-rockchip|tinker_board_3N-android12-1.0.7.xml||
+|Android 12|1.0.10|android12-rockchip|tinker_board_3N-android12-1.0.10.xml||
