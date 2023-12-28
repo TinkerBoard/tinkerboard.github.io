@@ -71,7 +71,7 @@ const config = {
       navbar: {
         title: 'ASUS Tinker Board Series Documentation',
         logo: {
-          alt: 'ASUS Tinker Board Series Documentation Logo',
+          alt: 'ASUS Tinker Board Series Documentation logo',
           src: 'img/tinker_board-logo.png',
         },
         items: [
@@ -133,6 +133,10 @@ const config = {
               {
                 label: 'Blog',
                 to: '/blog',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/TinkerBoard/',
               },
               {
                 label: 'GitHub - Linux',
