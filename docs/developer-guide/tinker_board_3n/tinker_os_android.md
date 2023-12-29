@@ -13,18 +13,18 @@ Run the `lunch` command to choose `Tinker_Board_3N-userdebug` as the target to b
 lunch Tinker_Board_3N-userdebug 
 ```
 
-Run the `build.sh` script to build the code. Here the argument `U` is provided to build the u-boot, the arguments `C` and `K` are provided to build the kernel, the argument `A` is provided to build the Android, and the argument `u` is provided to pack all the images. All the images will be stored in the directory rockdev/Image-Tinker_Board_3N.
+Run the `build.sh` script to build the code. Here the option `U` is provided to build the u-boot, the options `C` and `K` are provided to build the kernel, the option `A` is provided to build the Android, and the option `u` is provided to pack all the images. All the images will be stored in the directory rockdev/Image-Tinker_Board_3N.
 ```bash
 ./build.sh -UCKAu
 ```
 
-You can configure the build number with the argument `n`. If the argument `p` is provided, the build output will be moved to the directory IMAGE.
+You can configure the build number with the option `n`. If the option `p` is provided, the build output will be moved to the directory IMAGE.
 ```bash
 ./build.sh -UCKAup -n X.Y.Z
 ```
 
-## Building OTA packages
-You can provide the argument `o` to build the OTA packages. The target-files.zip archive and the full OTA package will be built out.
+## Building OTA package
+You can provide the option `o` to build target files archieve and the OTA package. The target-files.zip archive and the full OTA package will be built out.
 ```bash
 ./build.sh -UCKAou
 ```
@@ -32,11 +32,9 @@ You can provide the argument `o` to build the OTA packages. The target-files.zip
 Please refer to [Building OTA packages](https://source.android.com/docs/core/ota/tools) to build full updates and incremental updates.
 
 ## A/B boot
-To enable the A/B boot, the following modification needs to be applied.
+To enable the A/B boot, please apply the modification under each directory.
 
-- u-boot
-
-  In the directory u-boot, make sure the config CONFIG_ANDROID_AB is enabled.
+- u-boot: In the directory u-boot, make sure the config CONFIG_ANDROID_AB is enabled.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..6779b1a11e 100644
@@ -52,9 +50,7 @@ index a7b28f952b..6779b1a11e 100644
  # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
 ```
 
-- device/asus/tinker_board_3
-
-  In the directory device/asus/tinker_board_3, change the flag BOARD_USES_AB_IMAGE to true.
+- device/asus/tinker_board_3: In the directory device/asus/tinker_board_3, change the flag BOARD_USES_AB_IMAGE to true.
 ```diff
 diff --git a/Tinker_Board_3N/BoardConfig.mk b/Tinker_Board_3N/BoardConfig.mk
 index 59d3f8a..d19d66d 100644
@@ -71,16 +67,15 @@ index 59d3f8a..d19d66d 100644
  ifeq ($(strip $(BOARD_USES_AB_IMAGE)), true)
 ```
 
-- Provide the argument `B` when running the `build.sh` script.
+Please also provide the option `B` when running the `build.sh` script.
 ```bash
 ./build.sh -UCKABu
 ```
 
 ## Creating a new partition for A/B boot
-Here is the example to create a new partition persist for A/B boot and the partition will be mounted on /persist.
-- device/asus/common
+If want to creat a new partition for A/B boot, you can refer to this example. This example is to create a new partition `persist` for A/B boot and the partition will be mounted on `/persist`. Please apply the modification under each directory.
 
-  In the directory device/asus/common, edit the `mkimage_ab.sh` script to create the persist.img file. The initial data could also be added here.
+- device/asus/common: In the directory device/asus/common, edit the `mkimage_ab.sh` script to create the persist.img file. The initial data could also be added here.
 ```diff
 diff --git a/mkimage_ab.sh b/mkimage_ab.sh
 index 7bfcf27..2e5efe0 100755
@@ -103,10 +98,8 @@ index 7bfcf27..2e5efe0 100755
  chmod a+r -R $IMAGE_PATH/
 ```
 
-- device/asus/tinker_board_3
-
-  In the directory device/asus/tinker_board_3:
-  - Edit the `RebuildParameter.mk` file to add the partition persist into the partition_list.
+- device/asus/tinker_board_3: In the directory device/asus/tinker_board_3,
+  - Edit the `RebuildParameter.mk` file to add the partition `persist` into the partition_list.
   - Edit the `Tinker_Board_3N/fstab.in` file and the `Tinker_Board_3N/recovery.fstab_AB` file to add the partition /dev/block/by-name/persist.
   - Edit the `sepolicy/dtoverlay/file_contexts` file to configure SELinux for the partition /dev/block/by-name/persist.
 ```diff
@@ -157,9 +150,7 @@ index fd6a17f..75c0564 100644
 +/dev/block/by-name/persist    u:object_r:userdata_block_device:s0
 ```
 
-- RKTools
-
-  In the directory RKTools, add the partition persist using the image persist.img.
+- RKTools: In the directory RKTools, add the partition `persist` using the image persist.img.
 ```diff
 diff --git a/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab b/linux/Linux_Pack_Firmware/rockdev/package-file-Tinker_Board_3N-ab
 index 1cf0780..17489b5 100755
@@ -175,9 +166,7 @@ index 1cf0780..17489b5 100755
  baseparameter    Image/baseparameter.img
 ```
 
-- system/core
-
-  In the directory system/core, edit the `rootdir/Android.mk` file to mount the partition persist on /persist.
+- system/core: In the directory system/core, edit the `rootdir/Android.mk` file to mount the partition `persist` on `/persist`.
 ```diff
 diff --git a/rootdir/Android.mk b/rootdir/Android.mk
 index 63a1a484b..39cea748d 100644
@@ -195,15 +184,13 @@ index 63a1a484b..39cea748d 100644
 ```
 
 ## Secure boot
-To enable the secure boot, the following modification needs to be applied.
+To enable the secure boot, please apply the modification under each directory.
 
 :::caution
-If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same keys used to enable the secure boot.
+If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same key used to enable the secure boot.
 :::
 
-- u-boot
-
-In the directory u-boot, make sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_SPL_FIT_ROLLBACK_PROTECT to enable the u-boot rollback protection.
+- u-boot: In the directory u-boot, ㄩake sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX to enable the u-boot rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..1428a5abb5 100644
@@ -228,10 +215,10 @@ openssl req -batch -new -x509 -key keys/dev.key -out keys/dev.crt
 cd ..
 ```
 
-Once the keys are ready, build and sign the u-boot by providing the argument `--spl-new` and make it able to enable the secure boot automaticall by providing the arguement `--burn-key-hash`.
+Once the keys are ready, build and sign the u-boot by providing the option `--spl-new` and make it able to enable the secure boot automaticall by providing the option `--burn-key-hash`.
 
 :::danger
---burn-key-hash: If this arguemnt is provided, the secure boot for this SoC will be enabled during the 1st boot-up automatically after the image is installed. Then, the device can not boot with any other images which are not signed by the same keys. Suggest you only do this for the secure boot enablement and use the arguemnt `--spl-new` to sign the image without the argument `--burn-key-hash`.
+--burn-key-hash: If this option is provided, the secure boot for this SoC will be enabled during the 1st boot-up automatically after the image is installed. Then, the device can not boot with any other images which are not signed by the same key. Suggest you only do this for the secure boot enablement and use the option `--spl-new` to sign the image without the option `--burn-key-hash`.
 :::
 
 ```bash 
@@ -240,15 +227,14 @@ cd u-boot
 cd ..
 ```
 
-Or only to build and sign the u-boot by providing the argument `--spl-new`
-
+Or only to build and sign the u-boot by providing the option `--spl-new`
 ```bash 
 cd u-boot
 ./make.sh tinker_board_3n --spl-new
 cd ..
 ```
 
-If the config CONFIG_SPL_FIT_ROLLBACK_PROTECT is enabled to support the u-boot rollback protection. You will need to provide the argement `-version-uboot` and `--rollback-index-uboot`.
+If the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX is enabled to support the u-boot rollback protection. You will need to provide the options `-version-uboot` and `--rollback-index-uboot`.
 
 ```bash 
 cd u-boot
@@ -256,7 +242,7 @@ cd u-boot
 cd ..
 ```
 
-Then, build the rest without re-building u-boot by removing the argument `U`.
+Then, build the rest without re-building u-boot by removing the option `U`.
 ```bash 
 ./build.sh -CKABu
 ```
@@ -277,11 +263,9 @@ adb shell getprop | grep "vendor.secureboot"
 ```
 
 ## Android verified boot
-To enable the Android verified boot, the following modification needs to be applied.
+To enable the Android verified boot, please apply the modification under each directory.
 
-- external/avb
- 
-  In the directory externa/avb, edit the `test/avb_atx_generate_test_data` file to change the product ID.
+- external/avb: In the directory externa/avb, edit the `test/avb_atx_generate_test_data` file to change the product ID.
 ```diff
 diff --git a/test/avb_atx_generate_test_data b/test/avb_atx_generate_test_data
 index 1b8bb2b..83016ad 100755
@@ -298,16 +282,14 @@ index 1b8bb2b..83016ad 100755
  if [ ! -f testkey_atx_prk.pem ]; then
 ```
 
--  Remove the default test keys and generate new atx_permanent_attributes.bin , atx_metadata.bin, testkey_atx_pik.pem, testkey_atx_prk.pem, testkey_atx_psk.pem, testkey_atx_puk.pem, atx_unlock_challenge.bin, atx_unlock_credential.bin stored in the external/avb/test/data directory. (You only need to do this once if you don't have these generated.)
+Remove the default test keys and generate new atx_permanent_attributes.bin , atx_metadata.bin, testkey_atx_pik.pem, testkey_atx_prk.pem, testkey_atx_psk.pem, testkey_atx_puk.pem, atx_unlock_challenge.bin, atx_unlock_credential.bin stored in the external/avb/test/data directory. (You only need to do this once if you don't have these generated.)
 ```bash
 cd external/avb/test/data
 rm testkey_atx_p*
 ../avb_atx_generate_test_data
 ```
 
-- u-boot
-
-  In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_FIT_ROLLBACK_PROTECT to enable the rollback protection.
+- u-boot: In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_FIT_ROLLBACK_PROTECT to enable the rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..4f7502fdf9 100644
@@ -324,9 +306,10 @@ index a7b28f952b..4f7502fdf9 100644
 :::danger
 If the AVB key is embeded in th u-boot, the AVB for this SoC will be enabled during the 1st boot-up automatically after the image is installed. Suggest you only do this for the AVB enablement.
 :::
-- Embed the AVB key in the u-boot to write the key automatically during the 1st boot-up automatically after the image is installed.
-  - Apply the patch to embed the AVB key in to the u-boot and extract the public key.
-  - Edit the `lib/avb/libavb_user/avb_ops_user.c` file to replace the data of avb_root_pub[] with the data of avb_root_pub_bin in avb_root_pub.h extracted.
+
+Embed the AVB key in the u-boot to write the key automatically during the 1st boot-up automatically after the image is installed.
+- Apply the patch to embed the AVB key in to the u-boot and extract the public key.
+- Edit the `lib/avb/libavb_user/avb_ops_user.c` file to replace the data of avb_root_pub[] with the data of avb_root_pub_bin in avb_root_pub.h extracted.
 ```bash
 cd u-boot
 git apply ../RKDocs/common/security/patch/u-boot/0001-avb-add-embedded-key.patch
@@ -336,9 +319,7 @@ cd external/avb
 cd -
 ```
 
-- device/asus/tinker_board_3
-
-  In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_FIT_ROLLBACK_PROTECT to be enabled for u-boot as well.
+- device/asus/tinker_board_3: In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_FIT_ROLLBACK_PROTECT to be enabled for u-boot as well.
 ```bash
 diff --git a/BoardConfig.mk b/BoardConfig.mk
 index 6ce3cd7..33f515b 100644
