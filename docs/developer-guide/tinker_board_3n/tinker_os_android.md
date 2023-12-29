@@ -190,7 +190,7 @@ To enable the secure boot, please apply the modification under each directory.
 If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same key used to enable the secure boot.
 :::
 
-- u-boot: In the directory u-boot, ㄩake sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_SPL_FIT_ROLLBACK_PROTECT to enable the u-boot rollback protection.
+- u-boot: In the directory u-boot, make sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_SPL_FIT_ROLLBACK_PROTECT to enable the u-boot rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..1428a5abb5 100644
