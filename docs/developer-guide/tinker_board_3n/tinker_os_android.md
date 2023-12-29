@@ -190,7 +190,7 @@ To enable the secure boot, please apply the modification under each directory.
 If the secure boot is eanbled, the device can not boot with any other images which are not signed by the same key used to enable the secure boot.
 :::
 
-- u-boot: In the directory u-boot, ㄩake sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX to enable the u-boot rollback protection.
+- u-boot: In the directory u-boot, ㄩake sure the configs CONFIG_FIT_SIGNATURE, CONFIG_SPL_FIT_SIGNATURE, and CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE are enabled. You can also enable the config CONFIG_SPL_FIT_ROLLBACK_PROTECT to enable the u-boot rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..1428a5abb5 100644
@@ -234,7 +234,7 @@ cd u-boot
 cd ..
 ```
 
-If the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX is enabled to support the u-boot rollback protection. You will need to provide the options `-version-uboot` and `--rollback-index-uboot`.
+If the config CONFIG_SPL_FIT_ROLLBACK_PROTECT is enabled to support the u-boot rollback protection. You will need to provide the options `-version-uboot` and `--rollback-index-uboot`.
 
 ```bash 
 cd u-boot
@@ -289,7 +289,7 @@ rm testkey_atx_p*
 ../avb_atx_generate_test_data
 ```
 
-- u-boot: In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_FIT_ROLLBACK_PROTECT to enable the rollback protection.
+- u-boot: In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX to enable the rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..4f7502fdf9 100644
@@ -319,7 +319,7 @@ cd external/avb
 cd -
 ```
 
-- device/asus/tinker_board_3: In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_FIT_ROLLBACK_PROTECT to be enabled for u-boot as well.
+- device/asus/tinker_board_3: In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_ANDROID_AVB_ROLLBACK_INDEX to be enabled for u-boot as well.
 ```bash
 diff --git a/BoardConfig.mk b/BoardConfig.mk
 index 6ce3cd7..33f515b 100644
