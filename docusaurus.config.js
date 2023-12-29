@@ -69,9 +69,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/tinker_board-logo.png',
       navbar: {
-        title: 'ASUS Tinker Board Series Documentation',
+        title: 'ASUS Tinker Board Series',
         logo: {
-          alt: 'ASUS Tinker Board Series Documentation logo',
+          alt: 'ASUS Tinker Board Series logo',
           src: 'img/tinker_board-logo.png',
         },
         items: [
@@ -79,7 +79,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Getting Started',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
