@@ -71,7 +71,7 @@ const config = {
       navbar: {
         title: 'ASUS Tinker Board Series',
         logo: {
-          alt: 'ASUS Tinker Board Series logo',
+          alt: 'ASUS Tinker Board Series Logo',
           src: 'img/tinker_board-logo.png',
         },
         items: [
