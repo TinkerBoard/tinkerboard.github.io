@@ -262,10 +262,8 @@ adb shell getprop | grep "vendor.secureboot"
 [vendor.secureboot]: [true]
 ```
 
-## Android verified boot
-To enable the Android verified boot, please apply the modification under each directory.
-
-- external/avb: In the directory externa/avb, edit the `test/avb_atx_generate_test_data` file to change the product ID.
+## Android Verified Boot
+To enable the Android Verified Boot, please generate the key pairs and the data for your product first. In the directory `externa/avb`, edit the `test/avb_atx_generate_test_data` file to change the product ID for your product.
 ```diff
 diff --git a/test/avb_atx_generate_test_data b/test/avb_atx_generate_test_data
 index 1b8bb2b..83016ad 100755
@@ -282,14 +280,15 @@ index 1b8bb2b..83016ad 100755
  if [ ! -f testkey_atx_prk.pem ]; then
 ```
 
-Remove the default test keys and generate new atx_permanent_attributes.bin , atx_metadata.bin, testkey_atx_pik.pem, testkey_atx_prk.pem, testkey_atx_psk.pem, testkey_atx_puk.pem, atx_unlock_challenge.bin, atx_unlock_credential.bin stored in the external/avb/test/data directory. (You only need to do this once if you don't have these generated.)
+Remove the default test keys and generate new atx_product_id.bin, testkey_atx_prk.pem, testkey_atx_pik.pem,  testkey_atx_psk.pem, testkey_atx_puk.pem, atx_permanent_attributes.bin, atx_pik_certificate.bin, atx_psk_certificate.bin, atx_metadata.bin, atx_unlock_challenge.bin, atx_puk_certificate.bin, atx_unlock_credential.bin, stored in the external/avb/test/data directory. (You only need to do this once if you don't have these generated. You can put those you generated before here if you already have and skip this step.)
 ```bash
 cd external/avb/test/data
 rm testkey_atx_p*
 ../avb_atx_generate_test_data
+cd -
 ```
 
-- u-boot: In the directory u-boot, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX to enable the rollback protection.
+In the directory `u-boot`, make sure the configs CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE and CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK are enabled. You can also enable the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX to enable the rollback protection.
 ```diff
 diff --git a/configs/tinker_board_3n_defconfig b/configs/tinker_board_3n_defconfig
 index a7b28f952b..4f7502fdf9 100644
@@ -303,23 +302,7 @@ index a7b28f952b..4f7502fdf9 100644
 +CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK=y
 ```
 
-:::danger
-If the AVB key is embeded in th u-boot, the AVB for this SoC will be enabled during the 1st boot-up automatically after the image is installed. Suggest you only do this for the AVB enablement.
-:::
-
-Embed the AVB key in the u-boot to write the key automatically during the 1st boot-up automatically after the image is installed.
-- Apply the patch to embed the AVB key in to the u-boot and extract the public key.
-- Edit the `lib/avb/libavb_user/avb_ops_user.c` file to replace the data of avb_root_pub[] with the data of avb_root_pub_bin in avb_root_pub.h extracted.
-```bash
-cd u-boot
-git apply ../RKDocs/common/security/patch/u-boot/0001-avb-add-embedded-key.patch
-cd -
-cd external/avb
-./avbtool extract_public_key --key test/data/testkey_atx_psk.pem --output avb_root_pub.bin$ xxd -i avb_root_pub.bin > test/data/avb_root_pub.h
-cd -
-```
-
-- device/asus/tinker_board_3: In the directory device/asus/tinker_board_3, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_ANDROID_AVB_ROLLBACK_INDEX to be enabled for u-boot as well.
+In the directory `device/asus/tinker_board_3`, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_ANDROID_AVB_ROLLBACK_INDEX to be enabled for u-boot as well.
 ```bash
 diff --git a/BoardConfig.mk b/BoardConfig.mk
 index 6ce3cd7..33f515b 100644
@@ -339,7 +322,54 @@ index 6ce3cd7..33f515b 100644
 
 ```
 
-Once the device boots up with the AVB enabled image, you can see the console log as the following.
+There are 2 ways to enable AVB, one is to embed the key into u-boot and the other one is to write the key into the OTP area. You just need to choose one of the following 2 ways to enable AVB.
+
+1. To embed the AVB key in the u-boot
+- Extract the public key
+```bash
+cd external/avb
+./avbtool extract_public_key --key test/data/testkey_atx_psk.pem --output avb_root_pub.bin
+xxd -i avb_root_pub.bin > test/data/avb_root_pub.h
+cd -
+```
+
+- Generate the SHA256 checksum for unblocking the devices
+```bash
+cd external/avb
+sha256sum test/data/atx_unlock_credential.bin | cut -d' ' -f1 | xxd -r -p > test/data/avb_unlock_credential_sha256sum.bin
+xxd -i test/data/avb_unlock_credential_sha256sum.bin > test/data/avb_unlock_credential_sha256sum.h
+cd -
+```
+
+- Apply the patchs
+```bash
+cd u-boot
+git apply ../RKDocs/common/security/patch/u-boot/0001-avb-add-embedded-key.patch
+git apply ../RKDocs/common/security/patch/u-boot/0002-Remove-hardcode-of-locking-devices.patch
+git apply ../RKDocs/common/security/patch/u-boot/0003-fastboot-support-authenticated-unlock-using-embedded.patch
+cd -
+```
+
+- Edit the `lib/avb/libavb_user/avb_ops_user.c` file to replace the data of avb_root_pub[] with the data of avb_root_pub_bin in the `avb_root_pub.h` file generated.
+- Edit the `lib/avb/rk_avb_user/rk_avb_ops_user.c` file to replace the data of atx_unlock_credential_hash[] with the data of test_data_avb_unlock_credential_sha256sum_bin in `avb_unlock_credential_sha256sum.h` file generated.
+
+2. To write the key into the OTP area using fastboot commands
+:::caution
+If the AVB key is written into the OTP area, it can not be changed and undone.
+:::
+
+Please boot the device to the bootloader mode and use the `atx_permanent_attributes.bin` file generated previously to write the key into the OTP area.
+```bash
+fastboot stage atx_permanent_attributes.bin
+fastboot oem fuse at-perm-attr
+```
+
+Once either way above is done, boot the device to the bootloader mode and use the fastboot command to lock the device.
+```bash
+fastboot oem at-lock-vboot
+```
+
+Then, boot up the device with the AVB enabled image, you can see the console log as the following.
 ```console 
 Console log in uboot stage:
 Vboot=0, AVB images, AVB verify
@@ -350,4 +380,78 @@ You can also use the adb command to get the property ro.boot.verifiedbootstate a
 ```bash
 adb shell getprop | grep "ro.boot.verifiedbootstate"
 [ro.boot.verifiedbootstate]: [green]
+```
+
+If you want to use the fastboot commands to flash the devices, you need to unlock them first. To unlock the devices for flashing, the unlock credential will be reqired. Since we have 2 ways to enable AVB, please provide the unlock credential according to the way you enable AVB.
+
+1. If the AVB key is embedded in the u-boot, please use the `atx_unlock_credential.bin` file generated previously and run the following commands to unlock the devices.
+```bash
+fastboot stage atx_unlock_credential.bin
+fastboot oem at-unlock-vboot
+```
+
+2. If the AVB key is written into the OTP area, we need to generate the new credential based on the challenge received.
+- Get the raw unlock challenge
+```bash
+fastboot oem at-get-vboot-unlock-challenge
+fastboot get_staged raw_unlock_challenge.bin
+```
+
+- Run the `avb-challenge-verify.py` file (Shown as the following) to verify raw unlock challenge using `atx_product_id.bin` file generated previously and generate the `unlock_challenge.bin` file.
+
+```python
+#/user/bin/env python
+"this is a test module for getting unlock challenge"
+import sys
+import  os
+from hashlib import sha256
+
+def challenge_verify():
+	if (len(sys.argv) != 3) :
+		print "Usage: avb-challenge-verify.py [challenge_file] [product_id_file]"
+		return
+	if ((sys.argv[1] == "-h") or (sys.argv[1] == "--h")):
+		print "Usage: avb-challenge-verify.py [challenge_file] [product_id_file]"
+		return
+	try:
+		challenge_file = open(sys.argv[1], 'rb')
+		product_id_file = open(sys.argv[2], 'rb')
+		challenge_random_file = open('unlock_challenge.bin', 'wb')
+		challenge_data = challenge_file.read(52)
+		product_id_data = product_id_file.read(16)
+		product_id_hash = sha256(product_id_data).digest()
+		print("The challege version is %d" %ord(challenge_data[0]))
+		if (product_id_hash != challenge_data[4:36]) :
+			print("Product id verify error!")
+			return
+		challenge_random_file.write(challenge_data[36:52])
+		print("Success!")
+	finally:
+		if challenge_file:
+			challenge_file.close()
+		if product_id_file:
+			product_id_file.close()
+		if challenge_random_file:
+			challenge_random_file.close()
+
+if __name__ == '__main__':
+	challenge_verify()
+```
+
+```bash
+python avb-challenge-verify.py raw_unlock_challenge.bin atx_product_id.bin
+```
+
+- Use the `unlock_challenge.bin` file and certificates generated previously to generate the new `atx_unlock_credential.bin` file. Please make sure the paths for files are correct.
+```bash
+cd external/avb
+python avbtool make_atx_unlock_credential --output=test/data/atx_unlock_credential.bin --intermediate_key_certificate=test/data/atx_pik_certificate.bin --unlock_key_certificate=test/data/atx_puk_certificate.bin --challenge=unlock_challenge.bin --unlock_key=test/data/testkey_atx_puk.pem
+cd -
+```
+
+- Use the new generated `stage atx_unlock_credential.bin` file and the following commands to unlock the devices.
+
+```bash
+fastboot stage atx_unlock_credential.bin
+fastboot oem at-unlock-vboot
 ```
