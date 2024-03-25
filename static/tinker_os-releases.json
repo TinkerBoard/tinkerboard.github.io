@@ -1,0 +1,41 @@
+{
+    "Tinker OS Releases": {
+        "Tinker Board 2/2S": {
+            "Tinker OS Debian": [],
+            "Tinker OS Android": [],
+            "Tinker OS Yocto": []
+        },
+        "Tinker Board 3N": {
+            "Tinker OS Debian": [
+                {
+                    "version": "1.0.7",
+                    "fileName": "Tinker_Board_3N-Debian-Bullseye-v1.0.7-20230828-release.zip",
+                    "sha256": "cb8e8963b8caa007d904ef2045c7283c881cb7438058835640a1d8de81238d93",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker_Board_3N/Tinker_Board_3N-Debian-Bullseye-v1.0.7-20230828-release.zip?model=Tinker%20Board%203N"
+                },
+                {
+                    "version": "1.0.17",
+                    "fileName": "Tinker_Board_3N-Debian-Bullseye-v1.0.17-20240111-release.zip",
+                    "sha256": "3117102962e8385115dcab436bd6252317bc835582751881716c5f5a4f18073c",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Debian-Bullseye-v1.0.17-20240111-release.zip?model=Tinker%20Board%203N"
+                }
+            ],
+            "Tinker OS Android": [
+                {
+                    "version": "1.0.2",
+                    "fileName": "Tinker_Board_3N-Android12-v1.0.2-20230809.zip",
+                    "sha256": "ff21778ebd4c79aae69cba2160822f2372f2abec2d52909083f9d788e8af186c",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker_Board_3N/Tinker_Board_3N-Android12-v1.0.2-20230809.zip?model=Tinker%20Board%203N"
+                }
+            ],
+            "Tinker OS Yocto": [
+                {
+                    "version": "1.0.3",
+                    "fileName": "Tinker_Board_3N-Yocto-Kirkstone-v1.0.2-20231018-release.zip",
+                    "sha256": "57fab83cbd0b73228f98854582f30f05622e552719a59f1690cc91e37e1ab5a2",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Yocto-Kirkstone-v1.0.2-20231018-release.zip?model=Tinker%20Board%203N"
+                }
+            ]
+        }
+    }
+}
