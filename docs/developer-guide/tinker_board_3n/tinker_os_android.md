@@ -302,7 +302,7 @@ index a7b28f952b..4f7502fdf9 100644
 +CONFIG_RK_AVB_LIBAVB_ENABLE_ATH_UNLOCK=y
 ```
 
-In the directory `device/asus/tinker_board_3`, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. You can also define BOARD_AVB_ROLLBACK_INDEX to enable the rollback protection and this will need CONFIG_ANDROID_AVB_ROLLBACK_INDEX to be enabled for u-boot as well.
+In the directory `device/asus/tinker_board_3`, make sure the config BOARD_AVB_ENABLE is enabled and the configs BOARD_AVB_ALGORITHM, BOARD_AVB_KEY_PATH, and BOARD_AVB_METADATA_BIN_PATH are defined. 
 ```bash
 diff --git a/BoardConfig.mk b/BoardConfig.mk
 index 6ce3cd7..33f515b 100644
@@ -320,6 +320,11 @@ index 6ce3cd7..33f515b 100644
  # used for fstab_generator, sdmmc controller address
  PRODUCT_BOOT_DEVICE := fe310000.sdhci,fe330000.nandc,fe2b0000.dwmmc
 
+```
+
+If the config CONFIG_ANDROID_AVB_ROLLBACK_INDEX is enabled in the u-boot to support the rollback protection. You will need to define BOARD_AVB_ROLLBACK_INDEX as the following as well.
+```bash 
++BOARD_AVB_ROLLBACK_INDEX := 1
 ```
 
 There are 2 ways to enable AVB, one is to embed the key into u-boot and the other one is to write the key into the OTP area. You just need to choose one of the following 2 ways to enable AVB.
