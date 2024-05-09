@@ -14,6 +14,7 @@ sidebar_position: 1
 |Debian Version|Release|Branch|Manifest|Note|
 |-|-|-|-|-|
 |Debian 11|latest|linux5.10-rk3399-debian11|default.xml||
+|Debian 11|3.0.16|linux5.10-rk3399-debian11|tinker_board_2-debian_11-3.0.16.xml||
 
 ### Tinker OS Yocto
 |Yocto Project Version|Release|Branch|Manifest|Note|
