@@ -20,6 +20,7 @@ sidebar_position: 1
 |Yocto Project Version|Release|Branch|Manifest|Note|
 |-|-|-|-|-|
 |Yocto 4.0|latest|linux5.10-rk3399-debian11|default.xml||
+|Yocto 4.0|1.0.3|linux5.10-rk3399-debian11|tinker_board_2-yocto4.0-1.0.3.xml||
 
 ### Tinker OS Android
 |Android Version|Release|Branch|Manifest|Note|
