@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # On Device Flash Software
-The On Device Flash Software is the system software to be flashed into the SD card and loaded by Tinker Board series boards from the SD card. With this software, you can boot the Tinker Board series board from the SD card and download the compatible OS images releases from the [Tinker Board website](https://tinker-board.asus.com/download.html), so then you can install the downloaded compatible OS image into this board or use this SD card to boot other boards and install the downloaded compatible OS images.
+The On Device Flash Software is the system software to be flashed into the SD card and loaded by Tinker Board series boards* from the SD card. With this software, you can boot the Tinker Board series board from the SD card and download the compatible OS images releases from the [Tinker Board website](https://tinker-board.asus.com/download.html), so then you can install the downloaded compatible OS image into this board or use this SD card to boot other boards and install the downloaded compatible OS images.
 
 First, you need to download the On Device Flash Software image for your board from the support site.
 
@@ -30,3 +30,5 @@ If you choose the option 3 "List the downloaded OS image", the downloaded compat
 
 You can choose to install it as well.
 ![On-Device-Flash-Software-8](/img/On-Device-Flash-Software-8.png)
+
+*The On Device Flash Software supports on Tinker Board 2/2S and Tinker Board 3N series as of 2024/05
