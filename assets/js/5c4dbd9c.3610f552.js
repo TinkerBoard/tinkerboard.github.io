@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunktinkerboard_github_io=self.webpackChunktinkerboard_github_io||[]).push([[97],{7757:e=>{e.exports=JSON.parse('{"name":"docusaurus-theme-search-algolia","id":"default"}')}}]);
