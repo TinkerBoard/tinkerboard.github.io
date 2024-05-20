@@ -1,8 +1,4 @@
 {
   "label": "Products",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "description": "The products we support."
-  }
+  "position": 2
 }
