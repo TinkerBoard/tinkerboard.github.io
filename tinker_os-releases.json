@@ -225,7 +225,7 @@
                     "fileName": "Tinker_Board_3N-Debian-Bullseye-v1.0.17-20240111-release.zip",
                     "sha256": "3117102962e8385115dcab436bd6252317bc835582751881716c5f5a4f18073c",
                     "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Debian-Bullseye-v1.0.17-20240111-release.zip?model=Tinker%20Board%203N"
-                }
+                },
                 {
                     "version": "1.0.26",
                     "fileName": "Tinker_Board_3N-Debian-Bullseye-v1.0.26-20240429-release.zip",
@@ -239,7 +239,7 @@
                     "fileName": "Tinker_Board_3N-Android12-v1.0.2-20230809.zip",
                     "sha256": "ff21778ebd4c79aae69cba2160822f2372f2abec2d52909083f9d788e8af186c",
                     "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker_Board_3N/Tinker_Board_3N-Android12-v1.0.2-20230809.zip?model=Tinker%20Board%203N"
-                }
+                },
                 {
                     "version": "1.0.14",
                     "fileName": "Tinker_Board_3N-Android12-v1.0.14-20240201.zip",
