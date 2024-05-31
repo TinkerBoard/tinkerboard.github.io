@@ -1,5 +1,59 @@
 {
     "Tinker OS Releases": {
+        "Tinker Board S R2.0": {
+            "Tinker OS Debian": [
+                {
+                    "version": "3.0.11",
+                    "fileName": "Tinker_Board-Debian-Buster-v3.0.11-20211026.zip",
+                    "sha256": "ed45d5dc37093ba30a3016ff26cd10ab6109ad98a03c1c8d15b7392b5782508b",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/TinkerBoard_R2.0/Tinker_Board-Debian-Buster-v3.0.11-20211026.zip?model=Tinker%20Board%20S%20R2.0"
+                },
+                {
+                    "version": "3.0.23",
+                    "fileName": "Tinker_Board-Debian-Buster-v3.0.23-20230426.zip",
+                    "sha256": "f05a75da90fb4af982e47bdeff904d8a52401c366460a7d009c7198e2c9f52b3",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%20R2.0/Tinker_Board-Debian-Buster-v3.0.23-20230426.zip?model=Tinker%20Board%20S%20R2.0"
+                }
+            ],
+            "Tinker OS Android": [
+                {
+                    "version": "0.0.1.1",
+                    "fileName": "Tinker_Board-Android11-v0.0.1.1-20211122.zip",
+                    "sha256": "6dc28fa823c32695a9bcc8f51c150dc7312c6454da4292c4a88d8ff7bdbdbfc3",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/TinkerBoardS_R2.0/Tinker_Board-Android11-v0.0.1.1-20211122.zip?model=Tinker%20Board%20S%20R2.0"
+                },
+                {
+                    "version": "0.0.2.1",
+                    "fileName": "Tinker_Board-Android11-v0.0.2-1-20211206.zip",
+                    "sha256": "0bc179b38df5fb88a6f324bce13dd66b556b90f66c6b04cc80083f42b7208bcb",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/TinkerBoardS_R2.0/Tinker_Board-Android11-v0.0.2-1-20211206.zip?model=Tinker%20Board%20S%20R2.0"
+                },
+                {
+                    "version": "0.0.3",
+                    "fileName": "Tinker_Board-Android12-v0.0.3-20221002.zip",
+                    "sha256": "c271911e7831510384f6c9822551dedf9b7b99124f0d684902aa4b01d6d5b0b3",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%20R2.0/Tinker_Board-Android12-v0.0.3-20221002.zip?model=Tinker%20Board%20R2.0"
+                },
+                {
+                    "version": "1.0.0",
+                    "fileName": "Tinker_Board-Android11-v1.0.0-20211214.zip",
+                    "sha256": "06cb7707c579f8e288f0e337da12c4ac8f02e0d4f552150afd29d54d7ecdcb52",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%20S%20R2.0/Tinker_Board-Android11-v1.0.0-20211214.zip?model=Tinker%20Board%20S%20R2.0"
+                },
+                {
+                    "version": "1.0.6",
+                    "fileName": "Tinker_Board-Android11-v1.0.6-20221003.zip",
+                    "sha256": "ad9b70bebdcc51b4120b801e95fe5ba39a32e3ca3699fe89ec64d01c4d2a9eea",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%20R2.0/Tinker_Board-Android11-v1.0.6-20221003.zip?model=Tinker%20Board%20S%20R2.0"
+                },
+                {
+                    "version": "14.4.0.22",
+                    "fileName": "Tinker_Board-Android7_Nougat-v14.4.0.22-20211208.zip",
+                    "sha256": "25985737e457fa9d69f22bb72925d2e254297fcf418f7da7151f74ffbc075c69",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/TinkerBoard_R2.0/Tinker_Board-Android7_Nougat-v14.4.0.22-20211208.zip?model=Tinker%20Board%20S%20R2.0"
+                }
+            ]
+        },
         "Tinker Board 2/2S": {
             "Tinker OS Debian": [
                 {
