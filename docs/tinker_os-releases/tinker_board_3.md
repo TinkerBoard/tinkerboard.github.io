@@ -7,6 +7,7 @@ sidebar_position: 4
 |Debian Version|Release|Branch|Manifest|
 |-|-|-|-|
 |Debian 11|latest|linux5.10-rk356x|default.xml|
+|Debian 11|v1.0.1|linux5.10-rk356x|tinker_board_3-debian_11-1.0.1.xml|
 
 ### Release notes
 #### Tinker Board 33S Debian 11 v.1.0.1
