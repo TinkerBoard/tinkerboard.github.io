@@ -18,3 +18,9 @@ sidebar_position: 4
 
 ##### Changelog
 - First release of Debian 11 image for Tinker Board 3
+
+## Tinker OS Android
+|Android Version|Release|Branch|Manifest|Note|
+|-|-|-|-|-|
+|Android 14|latest|android14-rockchip|default.xml||
+|Android 14|1.0.7|android14-rockchip|tinker_board_3-android14-1.0.7.xml||
