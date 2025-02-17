@@ -33,12 +33,12 @@ sidebar_position: 3
 |Yocto 4.0|1.0.7|linux5.10-rk356x|tinker_board_3n-yocto4.0-1.0.7.xml|
 
 ### Release Notes
-#### Tinker Board 3N Yocto 4.0 V1.0.7
-- Linux kernel version: 5.10
-- Release file: [Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip?model=Tinker%20Board%203N)
-- SHA-256 checksum: 499f41cb8084c0d541febfa0e6e6a7dbe930c376b415a5ab6706dc326690faf8
-##### Changelog
+#### Tinker Board 3N Yocto 4.0 (kernel 5.10) V1.0.7
+Linux kernel version: 5.10  
+Release file: [Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip?model=Tinker%20Board%203N)  
+SHA-256 checksum: 499f41cb8084c0d541febfa0e6e6a7dbe930c376b415a5ab6706dc326690faf8
 - Merge SDK rk356x_linux5.10_release_v1.5.0_20240620
+#### Tinker Board 3N Yocto 4.0 (kernel 5.10) V1.0.6
 
 ## Tinker OS Android
 |Android Version|Release|Branch|Manifest|Note|
