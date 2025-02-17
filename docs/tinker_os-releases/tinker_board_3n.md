@@ -27,13 +27,13 @@ sidebar_position: 3
 - Disable autologin functions for PSTI
 
 ## Tinker OS Yocto
-|Yocto Project Version|Release|Branch|Manifests|Note|
-|-|-|-|-|-|
+|Yocto Project Version|Release|Manifest Branch|Manifest File|
+|-|-|-|-|
 |Yocto 4.0|latest|linux5.10-rk356x|default.xml|
 |Yocto 4.0|1.0.7|linux5.10-rk356x|tinker_board_3n-yocto4.0-1.0.7.xml|
 
-### Release notes
-#### Tinker Board 3N Yocto 4.0 (kernel 5.10) V1.0.7
+### Release Notes
+#### Tinker Board 3N Yocto 4.0 V1.0.7
 - Linux kernel version: 5.10
 - Release file: [Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip?model=Tinker%20Board%203N)
 - SHA-256 checksum: 499f41cb8084c0d541febfa0e6e6a7dbe930c376b415a5ab6706dc326690faf8
