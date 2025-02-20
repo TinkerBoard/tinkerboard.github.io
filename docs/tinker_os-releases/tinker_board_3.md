@@ -19,6 +19,21 @@ sidebar_position: 4
 ##### Changelog
 - First release of Debian 11 image for Tinker Board 3
 
+## Tinker OS Yocto
+|Yocto Project Version|Release|Manifest Branch|Manifest File|
+|-|-|-|-|
+|Yocto 4.0|latest|linux5.10-rk356x|default.xml|
+|Yocto 4.0|1.0.1|linux5.10-rk356x|tinker_board_3-yocto4.0-1.0.1.xml|
+
+### Release Notes
+#### Tinker Board 3/3S Yocto 4.0 (kernel 5.10) V.1.0.1
+Release file: [Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip?model=Tinker%20Board%203)  
+SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131a9
+- This the first Yocto 4.0 release for Tinker Board 33S
+- Merge rk356x_linux5.10_release_v1.5.0_20240620
+- 40Pin: Fix 3V3 and 5V0
+- package: add dhcpcd to /etc/group to fix build fail
+
 ## Tinker OS Android
 |Android Version|Release|Manifest Branch|Manifest File|
 |-|-|-|-|
