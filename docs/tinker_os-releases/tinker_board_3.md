@@ -4,12 +4,28 @@ sidebar_position: 4
 
 # Tinker Board 3/3S
 ## Tinker OS Debian
-|Debian Version|Release|Branch|Manifest|
+|Debian Version|Release|Manifest Branch|Manifest File|
 |-|-|-|-|
 |Debian 11|latest|linux5.10-rk356x|default.xml|
+|Debian 11|1.0.6|linux5.10-rk356x|tinker_board_3-debian_11-1.0.6.xml|
 |Debian 11|v1.0.1|linux5.10-rk356x|tinker_board_3-debian_11-1.0.1.xml|
 
 ### Release notes
+#### Tinker Board 3/3S Debian 11 (kernel 5.10) V.1.0.6
+Default username/password: linaro/linaro  
+Release file: [Tinker_Board_3-Debian-Bullseye-v1.0.6-20241030-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.6-20241030-release.zip?model=Tinker%20Board%203)  
+SHA-256 checksum: 24aebe493f0515133fbee17316bad6e5b597f3f8ddce2a74ad8b29351e78c347
+- Fix the wrong usage of devnum in parsing config.txt
+- [CM] Implement failover service and focli
+- [CM] Support failover
+- defconfig: support Wireless USB Network Adapter for tinkerboard 3
+- TB3: usb: enable DYNAMIC_DEBUG and modify debugfs path for ehci
+- [CM] fix wrong permission for failover service
+- display: SPI: set fbtft config to y
+- rk3566/rk3568: ddr: update ddrbin to v1.23
+- 40PIN: MRAA: support Tinker Board 3 debain
+- 40PIN: Tinker 3: ASUS GPIO and WiringPI 1st version
+
 #### Tinker Board 3/3S Debian 11 v.1.0.1
 - Linux kernel version: 5.10
 - Default username/password: linaro/linaro
