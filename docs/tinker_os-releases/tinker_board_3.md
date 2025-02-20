@@ -9,6 +9,7 @@ sidebar_position: 4
 |Debian 11|latest|linux5.10-rk356x|default.xml|
 |Debian 11|1.0.7|linux5.10-rk356x|tinker_board_3-debian_11-1.0.7.xml|
 |Debian 11|1.0.6|linux5.10-rk356x|tinker_board_3-debian_11-1.0.6.xml|
+|Debian 11|1.0.4|linux5.10-rk356x|tinker_board_3-debian_11-1.0.4.xml|
 |Debian 11|v1.0.1|linux5.10-rk356x|tinker_board_3-debian_11-1.0.1.xml|
 
 ### Release notes
@@ -35,6 +36,14 @@ SHA-256 checksum: 24aebe493f0515133fbee17316bad6e5b597f3f8ddce2a74ad8b29351e78c3
 - 40PIN: MRAA: support Tinker Board 3 debain
 - 40PIN: Tinker 3: ASUS GPIO and WiringPI 1st version
 
+#### Tinker Board 3/3S Debian 11 (kernel 5.10) V.1.0.4
+Default username/password: linaro/linaro  
+Release file: [Tinker_Board_3-Debian-Bullseye-v1.0.4-20240815-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.4-20240815-release.zip?model=Tinker%20Board%203)  
+SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131a9
+- Merge rk356x_linux5.10_release_v1.5.0_20240620
+- 40Pin: Fix 3V3 and 5V0
+- package: add dhcpcd to /etc/group to fix build fail
+- 
 #### Tinker Board 3/3S Debian 11 v.1.0.1
 - Linux kernel version: 5.10
 - Default username/password: linaro/linaro
