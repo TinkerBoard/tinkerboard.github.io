@@ -76,13 +76,15 @@ SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131
 |Android 14|1.0.7|android14-rockchip|tinker_board_3-android14-1.0.7.xml|
 
 ### Release Notes
-#### Tinker Board 3/3S Android 14 (kernel 6.1) V.1.0.9
+#### Tinker Board 3/3S Android 14 v1.0.9
+Linux kernel version: 6.1  
 Release file: [Tinker_Board_3-Android14-v1.0.9-20241004.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Android14-v1.0.9-20241004.zip?model=Tinker%20Board%203)  
 SHA-256 checksum: 658404b1d4f09eb22299cd41a66bb4170f43b783339a4b108c6129b9ad6e4399
 - display: keep display rotation settings after reboot
 - display: LVDS: LT9211: modify some register's value when enable SSC
 
-#### Tinker Board 3/3S Android 14 (kernel 6.1) V.1.0.7
+#### Tinker Board 3/3S Android 14 v1.0.7
+Linux kernel version: 6.1  
 Release file: [Tinker_Board_3-Android14-v1.0.7-20240911.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Android14-v1.0.7-20240911.zip?model=Tinker%20Board%203)  
 SHA-256 checksum: 8ac270d3d47b4e852ac90b398497f7accbbc000e90694a689380a7b7fc05458a
 - This is the first Android 14 release for Tinker Board 3/3S.
