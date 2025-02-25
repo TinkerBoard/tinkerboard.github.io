@@ -69,11 +69,11 @@ SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131
 - package: add dhcpcd to /etc/group to fix build fail
 
 ## Tinker OS Android
-|Android Version|Release|Manifest Branch|Manifest File|
-|-|-|-|-|
+|Android Version|Release|Manifest Branch|Manifest File|Notes|
+|-|-|-|-|-|
 |Android 14|latest|android14-rockchip|default.xml|
 |Android 14|1.0.9|android14-rockchip|tinker_board_3-android14-1.0.9.xml|
-|Android 14|1.0.7|android14-rockchip|tinker_board_3-android14-1.0.7.xml|
+|Android 14|1.0.7|android14-rockchip|tinker_board_3-android14-1.0.7.xml|The revisions for the repositories rockchip-android-device-rockchip-rksdk and rockchip-android-hardware-rk29-camera_v3 are fixed with commits instead of tag since we need to apply the new commits to fix the build failure.|
 
 ### Release Notes
 #### Tinker Board 3/3S Android 14 v1.0.9
