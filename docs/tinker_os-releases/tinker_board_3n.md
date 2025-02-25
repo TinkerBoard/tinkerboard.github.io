@@ -50,9 +50,10 @@ SHA-256 checksum: 499f41cb8084c0d541febfa0e6e6a7dbe930c376b415a5ab6706dc326690fa
 |Android 12|1.0.10|android12-rockchip|tinker_board_3N-android12-1.0.10.xml|
 
 ### Release Notes
-#### Tinker Board 3N Android 14 V1.0.5
+#### Tinker Board 3N Android 14 v1.0.5
+Linux kernel version: 6.1  
 Release file: [Tinker_Board_3N-Android14-v1.0.5-20241024.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Android14-v1.0.5-20241024.zip?model=Tinker%20Board%203N))  
 SHA-256 checksum: 7a550c6088cfb6ada4974cf094e502fd9712dfaa05c7674983c10697b9ad71b4
-- Thi is the first Android 14 release for Tinker Board 3N.
-- Merge android-14.0-mid-rkr5
-- Support kiosk mode
+- First realease of Android 14 image for Tinker Board 3N
+- Merged android-14.0-mid-rkr5
+- Support Kiosk mode
