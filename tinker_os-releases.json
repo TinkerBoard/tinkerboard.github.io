@@ -212,6 +212,62 @@
                 }
 			]
         },
+        "Tinker Board 3": {
+            "Tinker OS Debian": [
+                {
+                    "version": "1.0.1",
+                    "fileName": "Tinker_Board_3-Debian-Bullseye-v1.0.1-20240606-release.zip",
+                    "sha256": "1dae122612ac1f88022108b52681ad946ae1e561274107a044fd85d5882aa31b",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.1-20240606-release.zip?model=Tinker%20Board%203"
+                },
+                {
+                    "version": "1.0.3",
+                    "fileName": "Tinker_Board_3-Debian-Bullseye-v1.0.3-20240715-release.zip",
+                    "sha256": "8d0179b1635f03c320a999e6e6628494ccab40665cb469fffdeea4a61abc6224",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.3-20240715-release.zip?model=Tinker%20Board%203"
+                },
+                {
+                    "version": "1.0.4",
+                    "fileName": "Tinker_Board_3-Debian-Bullseye-v1.0.4-20240815-release.zip",
+                    "sha256": "2e25b7dbc22faaab021636a658b5bbc18fa9ab2d66d84251dafdceeb3a66fcb5",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.4-20240815-release.zip?model=Tinker%20Board%203"
+                },
+                {
+                    "version": "1.0.6",
+                    "fileName": "Tinker_Board_3-Debian-Bullseye-v1.0.6-20241030-release.zip",
+                    "sha256": "24aebe493f0515133fbee17316bad6e5b597f3f8ddce2a74ad8b29351e78c347",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.6-20241030-release.zip?model=Tinker%20Board%203"
+                },
+                {
+                    "version": "1.0.7",
+                    "fileName": "Tinker_Board_3-Debian-Bullseye-v1.0.7-20241219-release.zip",
+                    "sha256": "16a1050acc8bcff1454b782263a7d79e9660647555c0bce0c0a0c2d7dd515399",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.7-20241219-release.zip?model=Tinker%20Board%203"
+                }
+            ],
+            "Tinker OS Android": [
+                {
+                    "version": "1.0.7",
+                    "fileName": "Tinker_Board_3-Android14-v1.0.7-20240911.zip",
+                    "sha256": "8ac270d3d47b4e852ac90b398497f7accbbc000e90694a689380a7b7fc05458a",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Android14-v1.0.7-20240911.zip?model=Tinker%20Board%203"
+                },
+                {
+                    "version": "1.0.9",
+                    "fileName": "Tinker_Board_3-Android14-v1.0.9-20241004.zip",
+                    "sha256": "658404b1d4f09eb22299cd41a66bb4170f43b783339a4b108c6129b9ad6e4399",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Android14-v1.0.9-20241004.zip?model=Tinker%20Board%203"
+                }
+            ],
+            "Tinker OS Yocto": [
+                {
+                    "version": "1.0.1",
+                    "fileName": "Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip",
+                    "sha256": "db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131a9",
+                    "url": "https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip?model=Tinker%20Board%203"
+                }
+            ]
+	},
         "Tinker Board 3N": {
             "Tinker OS Debian": [
                 {
