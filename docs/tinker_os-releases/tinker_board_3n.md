@@ -7,10 +7,20 @@ sidebar_position: 3
 |Debian Version|Release|Branch|Manifest|
 |-|-|-|-|
 |Debian 11|latest|linux5.10-rk356x|default.xml|
-|Debian 11|v1.0.26|linux5.10-rk356x|tinker_board_3n-debian_11-1.0.26.xml|
+|Debian 11|1.0.31|linux5.10-rk356x|tinker_board_3n-debian_11-1.0.31.xml|
+|Debian 11|?v1.0.26|linux5.10-rk356x|tinker_board_3n-debian_11-1.0.26.xml|
 |Debian 11|?1.0.7|linux5.10-rk356x-tinker_board_3n-debian_11-1.0.7|default.xml|Since there are some fixes needed for building, please use the default manifest for this branch to download the code for this release.|
 
 ### Release notes
+#### Tinker System 3N/Tinker Board 3N Debian 11 (Kernel 5.10) V1.0.31
+- Linux kernel version: 5.10
+- Default username/password: linaro/linaro
+- Release file: [Tinker_Board_3N-Debian-Bullseye-v1.0.31-20241024-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Debian-Bullseye-v1.0.31-20241024-release.zip?model=Tinker%20Board%203N)
+- SHA-256 checksum: 523833adef07e6ed559ff78d72a9725c9440b58f8bbc9dee9698e009f9760fe4
+
+##### Changelog
+- Add LTE keep alive functions
+
 #### Tinker Board 3N Debian 11 v.1.0.26
 - Linux kernel version: 5.10
 - Default username/password: linaro/linaro
@@ -38,6 +48,7 @@ Linux kernel version: 5.10
 Release file: [Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Yocto-Kirkstone-v1.0.7-20240814-release.zip?model=Tinker%20Board%203N)  
 SHA-256 checksum: 499f41cb8084c0d541febfa0e6e6a7dbe930c376b415a5ab6706dc326690faf8
 - Merge SDK rk356x_linux5.10_release_v1.5.0_20240620
+
 #### Tinker Board 3N Yocto 4.0 (kernel 5.10) V1.0.6
 
 ## Tinker OS Android
