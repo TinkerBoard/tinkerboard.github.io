@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Tinker Board 3N
 ## Tinker OS Debian
-|Debian Version|Release|Branch|Manifest|
+|Debian Version|Release|Manifest Branch|Manifest File|
 |-|-|-|-|
 |Debian 11|latest|linux5.10-rk356x|default.xml|
 |Debian 11|1.0.31|linux5.10-rk356x|tinker_board_3n-debian_11-1.0.31.xml|
