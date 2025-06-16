@@ -14,9 +14,11 @@ sidebar_position: 4
 
 ### Release notes
 #### Tinker Board 3/3S Debian 11 (kernel 5.10) V.1.0.7
-Default username/password: linaro/linaro  
-Release file: [Tinker_Board_3-Debian-Bullseye-v1.0.7-20241219-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.7-20241219-release.zip?model=Tinker%20Board%203)  
-SHA-256 checksum: 16a1050acc8bcff1454b782263a7d79e9660647555c0bce0c0a0c2d7dd515399
+- Default username/password: linaro/linaro  
+- Release file: [Tinker_Board_3-Debian-Bullseye-v1.0.7-20241219-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Debian-Bullseye-v1.0.7-20241219-release.zip?model=Tinker%20Board%203)  
+- SHA-256 checksum: 16a1050acc8bcff1454b782263a7d79e9660647555c0bce0c0a0c2d7dd515399
+
+##### Changelog
 - Add AICC browser shortcut on desktop
 - Add wifi_keepalive service
 - Merge RK SDK 1.5.0
@@ -61,8 +63,11 @@ SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131
 
 ### Release Notes
 #### Tinker Board 3/3S Yocto 4.0 (kernel 5.10) V.1.0.1
-Release file: [Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip?model=Tinker%20Board%203)  
-SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131a9
+- Linux kernel version: 5.10
+- Release file: [Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Yocto-Kirkstone-v1.0.1-20240827-release.zip?model=Tinker%20Board%203)  
+- SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131a9
+
+##### Changelog
 - This the first Yocto 4.0 release for Tinker Board 33S
 - Merge rk356x_linux5.10_release_v1.5.0_20240620
 - 40Pin: Fix 3V3 and 5V0
