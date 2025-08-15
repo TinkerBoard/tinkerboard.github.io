@@ -119,6 +119,7 @@ sidebar_position: 3
 |Yocto 4|latest|linux5.10-rk3399-debian11|default.xml||
 |Yocto 4|1.0.5|linux5.10-rk3399-debian11|tinker_board_2-yocto4.0-1.0.5.xml|
 |Yocto 4|1.0.3|linux5.10-rk3399-debian11|tinker_board_2-yocto4.0-1.0.3.xml|
+|Yocto 4|1.0.2|linux5.10-rk3399-debian11|There is no tag to be uploaded.|
 
 ### Release notes
 #### Tinker Board 2 /2S Yocto 4.0 (kernel 5.10) V1.0.5
@@ -136,6 +137,12 @@ sidebar_position: 3
 ##### Changelog
 - bump Yocto version for 4.0.13
 - FOTA update support
+#### Tinker Board 2 /2S Yocto 4.0 (kernel 5.10) V1.0.2
+- Release file: [Tinker_Board_2-Yocto-Kirkstone-1.0.2-20230919-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%202/Tinker_Board_2-Yocto-Kirkstone-1.0.2-20230919-release.zip?model=Tinker%20Board%202S)
+- SHA-256 checksum: 0acfb2e23fac0f5b53b7cce9c99f6d6b493627f6235c92839ecb42e521a03e79
+
+##### Changelog
+- First release of Yocto 4.0 image for Tinker Board 2 series.
 
 ## Tinker OS Android
 |Android Version|Release|Branch|Manifest|
