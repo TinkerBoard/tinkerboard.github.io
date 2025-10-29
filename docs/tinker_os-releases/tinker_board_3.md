@@ -77,10 +77,32 @@ SHA-256 checksum: db4f195c5b7376616ca7feb2d5ca75341c58ca7219a3769bf1552600fc5131
 |Android Version|Release|Manifest Branch|Manifest File|
 |-|-|-|-|
 |Android 14|latest|android14-rockchip|default.xml|
+|Android 14|1.0.19|android14-rockchip|tinker_board_3-android14-1.0.19.xml|
 |Android 14|1.0.9|android14-rockchip|tinker_board_3-android14-1.0.9.xml|
 |Android 14|1.0.7|android14-rockchip|tinker_board_3-android14-1.0.7.xml|
 
 ### Release Notes
+#### Tinker Board 3/3S Android 14 v1.0.19
+Linux kernel version: 6.1  
+Release file: [Tinker_Board_3-Android14-v1.0.19-20250919.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Android14-v1.0.19-20250919.zip?model=Tinker%20Board%203)  
+SHA-256 checksum: fd508bf29e71e3c76f946df96dc7cb2cf1246535d817f8262a1d20ed8102f66c
+- KioskMode: update to v1.1.0
+- TinkerConfig: update to v2.4.3
+- Fix phone ANR issue
+- Fix package installer issue
+- fs: Enable the EXFAT format.
+- Display: avoid rotate back to 0 degree when back to home screen
+- Support WF80GSYAUMNG0 dsi touch panel
+- Audio: Increase rk817-codec headphone output DAC volume
+- Wi-Fi: Connect to WPA2-Personal first
+- Touch: Implement touch rotating based on the android property
+- DMClient: update to v3.1.0.4
+- Support adb over ethernet
+- Allow the default minimum volume for STREAM_VOICE to be set to 0
+- Use Realtek vendor module and driver for rtl8822ce
+- Support the rooted enable feature
+- Make hdmi settings can be launched directly
+
 #### Tinker Board 3/3S Android 14 v1.0.9
 Linux kernel version: 6.1  
 Release file: [Tinker_Board_3-Android14-v1.0.9-20241004.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203/Tinker_Board_3-Android14-v1.0.9-20241004.zip?model=Tinker%20Board%203)  
