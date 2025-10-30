@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktinkerboard_github_io=globalThis.webpackChunktinkerboard_github_io||[]).push([[146],{9328:o=>{o.exports=JSON.parse('{"metadata":{"permalink":"/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);
