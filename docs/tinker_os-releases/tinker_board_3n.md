@@ -6,12 +6,23 @@ sidebar_position: 4
 ## Tinker OS Debian
 |Debian Version|Release|Manifest Branch|Manifest File|
 |-|-|-|-|
+|Debian 12|latest|linux6.1-rk3566_rk3568|default.xml|
+|Debian 12|1.0.4|linux6.1-rk3566_rk3568|tinker_board_3n-debian_12-1.0.4.xml|
 |Debian 11|latest|linux5.10-rk356x|default.xml|
 |Debian 11|1.0.31|linux5.10-rk356x|tinker_board_3n-debian_11-1.0.31.xml|
 |Debian 11|?v1.0.26|linux5.10-rk356x|tinker_board_3n-debian_11-1.0.26.xml|
 |Debian 11|?1.0.7|linux5.10-rk356x-tinker_board_3n-debian_11-1.0.7|default.xml|Since there are some fixes needed for building, please use the default manifest for this branch to download the code for this release.|
 
 ### Release notes
+#### Tinker Board 3N Debian 12 (Kernel 6.1) V1.0.4
+- Linux kernel version: 6.1
+- Default username/password: linaro/linaro
+- Release file: [Tinker_Board_3N-Debian-Bookworm-v1.0.4-20250909-release.zip](https://dlcdnets.asus.com/pub/ASUS/Embedded_IPC/Tinker%20Board%203N/Tinker_Board_3N-Debian-Bookworm-v1.0.4-20250909-release.zip?model=Tinker%20Board%203N)
+- SHA-256 checksum: 08887f3cf8f0028279f2a470b582da826a42a9d7c794c8826342825470d2d163
+
+##### Changelog
+- First release of Debian 12 image for Tinker Board 3N
+
 #### Tinker System 3N/Tinker Board 3N Debian 11 (Kernel 5.10) V1.0.31
 - Linux kernel version: 5.10
 - Default username/password: linaro/linaro
